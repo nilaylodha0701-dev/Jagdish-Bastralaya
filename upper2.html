@@ -14,6 +14,7 @@
 
 
     <!-- Google Font -->
+
     <link
         rel="preconnect"
         href="https://fonts.googleapis.com"
@@ -32,6 +33,7 @@
 
 
     <!-- CSS -->
+
     <link
         rel="stylesheet"
         href="upper2.css"
@@ -43,573 +45,1243 @@
 <body>
 
 
-    <!-- =====================================================
-         HEADER
-    ====================================================== -->
+<!-- =====================================================
+     HEADER
+====================================================== -->
 
-    <div class="header">
+<div class="header">
+
+    <a
+        href="index.html"
+        class="home-btn"
+    >
+        Home
+    </a>
 
 
-        <!-- Home Button -->
+    <select id="categoryFilter"></select>
 
-        <a
-            href="index.html"
-            class="home-btn"
+
+    <select id="genderFilter"></select>
+
+</div>
+
+
+
+<!-- =====================================================
+     CATEGORY + GENDER
+====================================================== -->
+
+<script>
+
+const categories = [
+
+    {
+        name: "Undergarments",
+        file: "inner2"
+    },
+
+    {
+        name: "Upper",
+        file: "upper2"
+    },
+
+    {
+        name: "Lower",
+        file: "lower2"
+    },
+
+    {
+        name: "Suit",
+        file: "suit"
+    },
+
+    {
+        name: "Thermals",
+        file: "thermals2"
+    }
+
+];
+
+
+const genders = [
+
+    {
+        name: "Gents",
+        file: "gents"
+    },
+
+    {
+        name: "Ladies",
+        file: "ladies"
+    },
+
+    {
+        name: "Kids",
+        file: "kids"
+    },
+
+    {
+        name: "Unisex",
+        file: "unisex"
+    }
+
+];
+
+
+const currentCategory = "upper2";
+
+const currentGender = "kids";
+
+
+
+/* =====================================================
+   CATEGORY DROPDOWN
+====================================================== */
+
+const categoryDropdown =
+    document.getElementById("categoryFilter");
+
+
+const savedCategory =
+    localStorage.getItem("selectedCategory");
+
+
+const selectedCat =
+    categories.find(cat =>
+        cat.file === savedCategory ||
+        cat.file === currentCategory
+    );
+
+
+if (selectedCat) {
+
+    const option =
+        document.createElement("option");
+
+    option.textContent =
+        selectedCat.name;
+
+    option.selected = true;
+
+    categoryDropdown.appendChild(option);
+
+}
+
+
+categories.forEach(cat => {
+
+    if (
+        !selectedCat ||
+        cat.file !== selectedCat.file
+    ) {
+
+        const option =
+            document.createElement("option");
+
+        option.value =
+            cat.file + ".html";
+
+        option.textContent =
+            cat.name;
+
+        categoryDropdown.appendChild(option);
+
+    }
+
+});
+
+
+categoryDropdown.addEventListener(
+    "change",
+    function () {
+
+        const file =
+            this.value.replace(".html", "");
+
+        localStorage.setItem(
+            "selectedCategory",
+            file
+        );
+
+        window.location.href =
+            this.value;
+
+    }
+);
+
+
+
+/* =====================================================
+   GENDER DROPDOWN
+====================================================== */
+
+const genderDropdown =
+    document.getElementById("genderFilter");
+
+
+const savedGender =
+    localStorage.getItem("selectedGender");
+
+
+const selectedGenderObj =
+    genders.find(g =>
+        g.file === savedGender ||
+        g.file === currentGender
+    );
+
+
+if (selectedGenderObj) {
+
+    const option =
+        document.createElement("option");
+
+    option.textContent =
+        selectedGenderObj.name;
+
+    option.selected = true;
+
+    genderDropdown.appendChild(option);
+
+}
+
+
+genders.forEach(g => {
+
+    if (
+        !selectedGenderObj ||
+        g.file !== selectedGenderObj.file
+    ) {
+
+        const option =
+            document.createElement("option");
+
+        option.value =
+            g.file + ".html";
+
+        option.textContent =
+            g.name;
+
+        genderDropdown.appendChild(option);
+
+    }
+
+});
+
+
+genderDropdown.addEventListener(
+    "change",
+    function () {
+
+        const file =
+            this.value.replace(".html", "");
+
+        localStorage.setItem(
+            "selectedGender",
+            file
+        );
+
+        window.location.href =
+            this.value;
+
+    }
+);
+
+</script>
+
+
+
+<!-- =====================================================
+     BOYS
+====================================================== -->
+
+<h3 class="title">
+    BOYS
+</h3>
+
+
+<!-- =====================================================
+     SLEEVELESS T-SHIRT
+====================================================== -->
+
+<h3 class="title">
+    SLEEVELESS T-SHIRT
+</h3>
+
+
+<div class="product-grid">
+
+
+    <div class="product-card">
+
+        <img
+            src="1.jpeg.jpg"
+            alt="Sleeveless T-Shirt 1"
         >
-            Home
-        </a>
-
-
-        <!-- Category Dropdown -->
-
-        <select id="categoryFilter"></select>
-
-
-        <!-- Gender Dropdown -->
-
-        <select id="genderFilter"></select>
-
 
     </div>
 
 
-
-    <!-- =====================================================
-         CATEGORY + GENDER DROPDOWN JAVASCRIPT
-    ====================================================== -->
-
-    <script>
-
-
-        /* =================================================
-           CATEGORY
-        ================================================= */
-
-        const categories = [
-
-            {
-                name: "Undergarments",
-                file: "inner2"
-            },
-
-            {
-                name: "Upper",
-                file: "upper2"
-            },
-
-            {
-                name: "Lower",
-                file: "lower2"
-            },
-
-            {
-                name: "Suit",
-                file: "suit"
-            },
-
-            {
-                name: "Thermals",
-                file: "thermals2"
-            }
-
-        ];
-
-
-
-        /* =================================================
-           GENDER
-        ================================================= */
-
-        const genders = [
-
-            {
-                name: "Gents",
-                file: "gents"
-            },
-
-            {
-                name: "Ladies",
-                file: "ladies"
-            },
-
-            {
-                name: "Kids",
-                file: "kids"
-            },
-
-            {
-                name: "Unisex",
-                file: "unisex"
-            }
-
-        ];
-
-
-
-        /* =================================================
-           CURRENT PAGE
-        ================================================= */
-
-        const currentCategory = "upper2";
-
-        const currentGender = "kids";
-
-
-
-        /* =================================================
-           CATEGORY DROPDOWN
-        ================================================= */
-
-        const categoryDropdown =
-            document.getElementById("categoryFilter");
-
-
-        const savedCategory =
-            localStorage.getItem("selectedCategory");
-
-
-        const selectedCat =
-            categories.find(cat =>
-                cat.file === savedCategory ||
-                cat.file === currentCategory
-            );
-
-
-        /* Selected category first */
-
-        if (selectedCat) {
-
-            const option =
-                document.createElement("option");
-
-            option.textContent =
-                selectedCat.name;
-
-            option.selected = true;
-
-            categoryDropdown.appendChild(option);
-
-        }
-
-
-        /* Remaining categories */
-
-        categories.forEach(cat => {
-
-            if (
-                !selectedCat ||
-                cat.file !== selectedCat.file
-            ) {
-
-                const option =
-                    document.createElement("option");
-
-                option.value =
-                    cat.file + ".html";
-
-                option.textContent =
-                    cat.name;
-
-                categoryDropdown.appendChild(option);
-
-            }
-
-        });
-
-
-        /* Category change */
-
-        categoryDropdown.addEventListener(
-            "change",
-            function () {
-
-                const file =
-                    this.value.replace(".html", "");
-
-                localStorage.setItem(
-                    "selectedCategory",
-                    file
-                );
-
-                window.location.href =
-                    this.value;
-
-            }
-        );
-
-
-
-        /* =================================================
-           GENDER DROPDOWN
-        ================================================= */
-
-        const genderDropdown =
-            document.getElementById("genderFilter");
-
-
-        const savedGender =
-            localStorage.getItem("selectedGender");
-
-
-        const selectedGenderObj =
-            genders.find(g =>
-                g.file === savedGender ||
-                g.file === currentGender
-            );
-
-
-        /* Selected gender first */
-
-        if (selectedGenderObj) {
-
-            const option =
-                document.createElement("option");
-
-            option.textContent =
-                selectedGenderObj.name;
-
-            option.selected = true;
-
-            genderDropdown.appendChild(option);
-
-        }
-
-
-        /* Remaining genders */
-
-        genders.forEach(g => {
-
-            if (
-                !selectedGenderObj ||
-                g.file !== selectedGenderObj.file
-            ) {
-
-                const option =
-                    document.createElement("option");
-
-                option.value =
-                    g.file + ".html";
-
-                option.textContent =
-                    g.name;
-
-                genderDropdown.appendChild(option);
-
-            }
-
-        });
-
-
-        /* Gender change */
-
-        genderDropdown.addEventListener(
-            "change",
-            function () {
-
-                const file =
-                    this.value.replace(".html", "");
-
-                localStorage.setItem(
-                    "selectedGender",
-                    file
-                );
-
-                window.location.href =
-                    this.value;
-
-            }
-        );
-
-    </script>
-
-
-
-    <!-- =====================================================
-         SLEEVELESS T-SHIRT
-    ====================================================== -->
-
-    <h3 class="title">
-        BOYS
-    </h3>
-
-    <h3 class="title">
-        SLEEVELESS T-SHIRT
-    </h3>
-
-
-    <div class="product-grid">
-
-
-        <div class="product-card">
-
-            <img
-                src="1.jpeg.jpg"
-                alt="Sleeveless T-Shirt 1"
-            >
-
-        </div>
-
-
-        <div class="product-card">
-
-            <img
-                src="2.jpeg.jpg"
-                alt="Sleeveless T-Shirt 2"
-            >
-
-        </div>
-
-
-        <div class="product-card">
-
-            <img
-                src="3.jpeg.jpg"
-                alt="Sleeveless T-Shirt 3"
-            >
-
-        </div>
-
-
-        <div class="product-card">
-
-            <img
-                src="4.jpeg.jpg"
-                alt="Sleeveless T-Shirt 4"
-            >
-
-        </div>
-
-
-        <div class="product-card">
-
-            <img
-                src="5.jpeg.jpg"
-                alt="Sleeveless T-Shirt 5"
-            >
-
-        </div>
-
-
-        <div class="product-card">
-
-            <img
-                src="a1.jpeg"
-                alt="Sleeveless T-Shirt 6"
-            >
-
-        </div>
-
+    <div class="product-card">
+
+        <img
+            src="2.jpeg.jpg"
+            alt="Sleeveless T-Shirt 2"
+        >
 
     </div>
 
 
+    <div class="product-card">
 
-    <!-- =====================================================
-         HALF T-SHIRT
-    ====================================================== -->
-
-    <h3 class="title">
-        HALF T-SHIRT
-    </h3>
-
-
-    <div class="product-grid">
-
-
-        <div class="product-card">
-
-            <img
-                src="6.jpeg.jpg"
-                alt="Half T-Shirt 1"
-            >
-
-        </div>
-
-
-        <div class="product-card">
-
-            <img
-                src="7.jpeg.jpg"
-                alt="Half T-Shirt 2"
-            >
-
-        </div>
-
-
-        <div class="product-card">
-
-            <img
-                src="8.jpeg.jpg"
-                alt="Half T-Shirt 3"
-            >
-
-        </div>
-
-
-        <div class="product-card">
-
-            <img
-                src="9.jpeg.jpg"
-                alt="Half T-Shirt 4"
-            >
-
-        </div>
-
-
-        <div class="product-card">
-
-            <img
-                src="10.jpeg.jpg"
-                alt="Half T-Shirt 5"
-            >
-
-        </div>
-
-
-        <div class="product-card">
-
-            <img
-                src="a1.jpeg"
-                alt="Half T-Shirt 6"
-            >
-
-        </div>
-
+        <img
+            src="3.jpeg.jpg"
+            alt="Sleeveless T-Shirt 3"
+        >
 
     </div>
 
 
+    <div class="product-card">
 
-    <!-- =====================================================
-         FULL T-SHIRT
-         
-         ADD YOUR IMAGES HERE LATER
-    ====================================================== -->
-
-    <h3 class="title">
-        FULL T-SHIRT
-    </h3>
-
-
-    <div class="product-grid">
-
-        <!-- Add Full T-Shirt images here -->
+        <img
+            src="4.jpeg.jpg"
+            alt="Sleeveless T-Shirt 4"
+        >
 
     </div>
 
 
+    <div class="product-card">
 
-    <!-- =====================================================
-         HALF SHIRT
-         
-         ADD YOUR IMAGES HERE LATER
-    ====================================================== -->
+        <img
+            src="5.jpeg.jpg"
+            alt="Sleeveless T-Shirt 5"
+        >
 
-    <h3 class="title">
-        HALF SHIRT
-    </h3>
+    </div>
+
+
+    <!-- Placeholder / More products -->
+
+    <div class="product-card">
+
+        <img
+            src="a1.jpeg"
+            alt="and many more"
+        >
+
+    </div>
+
+
+</div>
+
+
+
+<!-- =====================================================
+     HALF T-SHIRT
+====================================================== -->
+
+<h3 class="title">
+    HALF T-SHIRT
+</h3>
+
+
+<div class="product-grid">
+
+
+    <div class="product-card">
+
+        <img
+            src="6.jpeg.jpg"
+            alt="Half T-Shirt 1"
+        >
+
+    </div>
+
+
+    <div class="product-card">
+
+        <img
+            src="7.jpeg.jpg"
+            alt="Half T-Shirt 2"
+        >
+
+    </div>
+
+
+    <div class="product-card">
+
+        <img
+            src="8.jpeg.jpg"
+            alt="Half T-Shirt 3"
+        >
+
+    </div>
+
+
+    <div class="product-card">
+
+        <img
+            src="9.jpeg.jpg"
+            alt="Half T-Shirt 4"
+        >
+
+    </div>
+
+
+    <div class="product-card">
+
+        <img
+            src="10.jpeg.jpg"
+            alt="Half T-Shirt 5"
+        >
+
+    </div>
+
+
+    <!-- Placeholder / More products -->
+
+    <div class="product-card">
+
+        <img
+            src="a1.jpeg"
+            alt="and many more"
+        >
+
+    </div>
+
+
+</div>
+
+
+
+<!-- =====================================================
+     FULL T-SHIRT
+====================================================== -->
+
+<h3 class="title">
+    FULL T-SHIRT
+</h3>
+
+
+<div class="product-grid">
+
+    <!-- Add Full T-Shirt images here later -->
+
+</div>
+
+
+
+<!-- =====================================================
+     HALF SHIRT
+====================================================== -->
+
+<h3 class="title">
+    HALF SHIRT
+</h3>
+
+
 <p>
+
     <div class="error">
-    Due to some reason we are not able to upload the image for this but it's available .
+
+        Due to some reason we are not able to upload
+        the image for this but it's available.
+
     </div>
+
 </p>
 
-    <!-- =====================================================
-         FULL SHIRT
-         
-         ADD YOUR IMAGES HERE LATER
-    ====================================================== -->
 
-    <h3 class="title">
-        FULL SHIRT
-    </h3>
+
+<!-- =====================================================
+     FULL SHIRT
+====================================================== -->
+
+<h3 class="title">
+    FULL SHIRT
+</h3>
+
+
+<p>
+
+    <div class="error">
+
+        Due to some reason we are not able to upload
+        the image for this but it's available.
+
+    </div>
+
+</p>
+
+
+
+<!-- =====================================================
+     GIRLS
+====================================================== -->
+
+<h3 class="title">
+    GIRLS
+</h3>
+
+
+<h3 class="title-img">
+    T-SHIRTS
+</h3>
+
+
+<div class="grid">
+
+
+    <div class="product">
+
+        <img
+            src="tp1.jpeg"
+            class="product-img ts"
+            alt="Girls T-Shirt 1"
+        >
+
+    </div>
+
+
+    <div class="product">
+
+        <img
+            src="tp2.jpeg"
+            class="product-img ts"
+            alt="Girls T-Shirt 2"
+        >
+
+    </div>
+
+
+    <div class="product">
+
+        <img
+            src="tp3.jpeg"
+            class="product-img ts"
+            alt="Girls T-Shirt 3"
+        >
+
+    </div>
+
+
+    <div class="product">
+
+        <img
+            src="tp4.jpeg"
+            class="product-img ts"
+            alt="Girls T-Shirt 4"
+        >
+
+    </div>
+
+
+    <div class="product">
+
+        <img
+            src="tp5.jpeg"
+            class="product-img ts"
+            alt="Girls T-Shirt 5"
+        >
+
+    </div>
+
+
+    <!-- Placeholder -->
+
+    <div class="product">
+
+        <img
+            src="a1.jpeg"
+            class="product-img ts"
+            alt="and many more"
+        >
+
+    </div>
+
+
+</div>
+
+
+
+<!-- =====================================================
+     TOPS
+====================================================== -->
+
+<h3 class="title">
+    TOPS
+</h3>
+
+
+<div class="grid">
+
+
+    <div class="product-image">
+
+        <img
+            src="tp6.jpeg"
+            class="product-img tp"
+            alt="Girls Top 1"
+        >
+
+    </div>
+
+
+    <div class="product-image">
+
+        <img
+            src="tp7.jpeg"
+            class="product-img tp"
+            alt="Girls Top 2"
+        >
+
+    </div>
+
+
+    <div class="product-image">
+
+        <img
+            src="tp8.jpeg"
+            class="product-img tp"
+            alt="Girls Top 3"
+        >
+
+    </div>
+
+
+    <div class="product-image">
+
+        <img
+            src="tp9.jpeg"
+            class="product-img tp"
+            alt="Girls Top 4"
+        >
+
+    </div>
+
+
+    <!-- Placeholder -->
+
+    <div class="product-image">
+
+        <img
+            src="a2.jpeg"
+            class="product-img tp"
+            alt="and many more"
+        >
+
+    </div>
+
+
+</div>
+
+
+
+<!-- =====================================================
+     PRODUCT ENQUIRY POPUP
+====================================================== -->
+
+<div
+    id="productModal"
+    class="product-modal"
+>
+
+
+    <div class="product-modal-box">
+
+
+        <!-- Selected Product Image -->
+
+        <img
+            id="modalProductImage"
+            class="product-modal-image"
+            src=""
+            alt="Selected Product"
+        >
+
+
+        <!-- Product Name -->
+
+        <div
+            id="selectedProductName"
+            class="product-modal-question"
+        ></div>
+
+
+        <!-- Question -->
+
+        <div
+            id="productQuestion"
+            class="product-modal-question"
+        >
+
+            Do you want to talk about this product?<br>
+
+            क्या आप इस उत्पाद के बारे में बात करना चाहते हैं?
+
+        </div>
+
+
+        <!-- YES / NO -->
+
+        <div
+            id="questionButtons"
+            class="modal-buttons"
+        >
+
+            <button
+                class="modal-btn yes-btn"
+                onclick="showContactOptions()"
+            >
+
+                Yes (हाँ)
+
+            </button>
+
+
+            <button
+                class="modal-btn no-btn"
+                onclick="closeProductModal()"
+            >
+
+                No (नहीं)
+
+            </button>
+
+        </div>
+
+
+        <!-- CONTACT OPTIONS -->
+
+        <div
+            id="contactOptions"
+            style="display:none;"
+        >
+
+
+            <div class="contact-question">
+
+                Choose how you want to contact us<br>
+
+                संपर्क करने का माध्यम चुनें
+
+            </div>
+
+
+            <div class="contact-buttons">
+
+
+                <a
+                    id="whatsappLink"
+                    class="contact-btn whatsapp-btn"
+                    href="#"
+                    target="_blank"
+                >
+
+                    WhatsApp
+
+                </a>
+
+
+                <a
+                    id="emailLink"
+                    class="contact-btn email-btn"
+                    href="#"
+                >
+
+                    Email
+
+                </a>
+
+
+            </div>
+
+
+            <button
+                class="close-modal-btn"
+                onclick="closeProductModal()"
+            >
+
+                Close
+
+            </button>
+
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     FOOTER
+====================================================== -->
+
+<footer class="footer">
 
     <p>
-    <div class="error">
-    Due to some reason we are not able to upload the image for this but it's available .
-    </div>
-</p>
 
+        &copy;
 
-    <h3 class="title">
-     GIRLS
-    </h3>
-    <h3 class="title-img">T-SHIRTS</h3>
-    <div class="grid">
-      <div class="product">
-    <img src="tp1.jpeg" class="product-img ts" alt="t-shirts">
-  </div>
-  <div class="product">
-    <img src="tp2.jpeg" class="product-img ts" alt="t-shirts">
-  </div>
-  <div class="product">
-    <img src="tp3.jpeg" class="product-img ts" alt="t-shirts">
-  </div>
-  <!-- Row 2 -->
-  <div class="product">
-    <img src="tp4.jpeg" class="product-img ts" alt="t-shirts">
-  </div>
-  <div class="product">
-    <img src="tp5.jpeg" class="product-img ts" alt="t-shirts">
-  </div>
-  <div class="product">
-    <img src="a1.jpeg" class="product-img ts" alt="and many more">
-  </div>
-</div>
+        <span id="year"></span>
 
-<h3 class="title">TOPS</h3>
-<div class="grid">
-      <div class="product-image">
-    <img src="tp6.jpeg" class="product-img tp" alt="halfshirts">
-    
-  </div>
-  <div class="product-image">
-    <img src="tp7.jpeg" class="product-img tp" alt="halfshirts">
-  </div>
-  <div class="product-image">
-    <img src="tp8.jpeg" class="product-img tp" alt="halfshirts">
-  </div>
-  <div class="product-image">
-    <img src="tp9.jpeg" class="product-img tp" alt="halfshirts">
-  </div>
-  <div class="product-image">
-    <img src="a2.jpeg" class="product-img tp" alt="and many more">
-  </div>
+        Jagdish Bastralaya.
 
-</div>
+        All rights reserved.
 
-    <!-- =====================================================
-         FOOTER
-    ====================================================== -->
+    </p>
 
-    <footer class="footer">
-
-        <p>
-
-            &copy;
-
-            <span id="year"></span>
-
-            Jagdish Bastralaya.
-
-            All rights reserved.
-
-        </p>
-
-    </footer>
+</footer>
 
 
 
-    <!-- =====================================================
-         YEAR
-    ====================================================== -->
+<!-- =====================================================
+     PRODUCT ENQUIRY JAVASCRIPT
+====================================================== -->
 
-    <script>
+<script>
 
-        document.getElementById("year").textContent =
+
+/* =====================================================
+   CONTACT DETAILS
+====================================================== */
+
+const whatsappNumber =
+    "919234748585";
+
+
+const emailAddress =
+    "jagdishbastralaya1977@gmail.com";
+
+
+
+/* =====================================================
+   SELECTED PRODUCT
+====================================================== */
+
+let selectedProductImage = "";
+
+let selectedProductName = "";
+
+
+
+/* =====================================================
+   PRODUCT IMAGES
+====================================================== */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+
+        /*
+         * Select only actual product images.
+         *
+         * We intentionally select:
+         *
+         * .product-card img
+         * .product img
+         * .product-image img
+         *
+         * These are the three types used
+         * on your current page.
+         */
+
+        const productImages =
+            document.querySelectorAll(
+                ".product-card img, .product img, .product-image img"
+            );
+
+
+        productImages.forEach(
+            function (image) {
+
+
+                /*
+                 * Make image clickable
+                 */
+
+                image.style.cursor =
+                    "pointer";
+
+
+                image.addEventListener(
+                    "click",
+                    function () {
+
+                        openProductModal(this);
+
+                    }
+                );
+
+            }
+        );
+
+
+        /*
+         * Footer year
+         */
+
+        document.getElementById(
+            "year"
+        ).textContent =
             new Date().getFullYear();
 
-    </script>
+
+    }
+);
+
+
+
+/* =====================================================
+   OPEN PRODUCT POPUP
+====================================================== */
+
+function openProductModal(image) {
+
+
+    /*
+     * Save image
+     */
+
+    selectedProductImage =
+        image.src;
+
+
+    /*
+     * Get product name
+     *
+     * The name comes from ALT text.
+     */
+
+    selectedProductName =
+        image.alt;
+
+
+    /*
+     * If alt is empty,
+     * use a generic name.
+     */
+
+    if (
+        !selectedProductName ||
+        selectedProductName.trim() === ""
+    ) {
+
+        selectedProductName =
+            "Product";
+
+    }
+
+
+    /*
+     * If this is a "many more"
+     * placeholder, do not call it
+     * a specific product.
+     */
+
+    if (
+        selectedProductName.toLowerCase()
+        === "and many more"
+    ) {
+
+        selectedProductName =
+            "More Products";
+
+    }
+
+
+    /*
+     * Modal
+     */
+
+    const modal =
+        document.getElementById(
+            "productModal"
+        );
+
+
+    /*
+     * Modal image
+     */
+
+    const modalImage =
+        document.getElementById(
+            "modalProductImage"
+        );
+
+
+    modalImage.src =
+        selectedProductImage;
+
+
+    /*
+     * Show product name
+     */
+
+    document.getElementById(
+        "selectedProductName"
+    ).textContent =
+        selectedProductName;
+
+
+    /*
+     * Show question
+     */
+
+    document.getElementById(
+        "productQuestion"
+    ).style.display =
+        "block";
+
+
+    /*
+     * Show Yes / No
+     */
+
+    document.getElementById(
+        "questionButtons"
+    ).style.display =
+        "flex";
+
+
+    /*
+     * Hide contact options
+     */
+
+    document.getElementById(
+        "contactOptions"
+    ).style.display =
+        "none";
+
+
+    /*
+     * Show modal
+     */
+
+    modal.classList.add("active");
+
+}
+
+
+
+/* =====================================================
+   YES BUTTON
+====================================================== */
+
+function showContactOptions() {
+
+
+    /*
+     * Hide question
+     */
+
+    document.getElementById(
+        "productQuestion"
+    ).style.display =
+        "none";
+
+
+    /*
+     * Hide product question buttons
+     */
+
+    document.getElementById(
+        "questionButtons"
+    ).style.display =
+        "none";
+
+
+    /*
+     * Show contact options
+     */
+
+    document.getElementById(
+        "contactOptions"
+    ).style.display =
+        "block";
+
+
+
+    /* =================================================
+       IMAGE URL
+    ================================================= */
+
+    const imageURL =
+        new URL(
+            selectedProductImage,
+            window.location.href
+        ).href;
+
+
+
+    /* =================================================
+       WHATSAPP MESSAGE
+    ================================================= */
+
+    const whatsappMessage =
+
+        "Hello Jagdish Bastralaya,\n\n" +
+
+        "I want to know more about this product.\n\n" +
+
+        "Product Name: " +
+
+        selectedProductName +
+
+        "\n\n" +
+
+        "Product Image:\n" +
+
+        imageURL;
+
+
+    const whatsappURL =
+
+        "https://wa.me/" +
+
+        whatsappNumber +
+
+        "?text=" +
+
+        encodeURIComponent(
+            whatsappMessage
+        );
+
+
+    document.getElementById(
+        "whatsappLink"
+    ).href =
+        whatsappURL;
+
+
+
+    /* =================================================
+       EMAIL
+    ================================================= */
+
+    const emailSubject =
+
+        "Product Enquiry - " +
+
+        selectedProductName;
+
+
+    const emailBody =
+
+        "Hello Jagdish Bastralaya,\n\n" +
+
+        "I want to know more about this product.\n\n" +
+
+        "Product Name: " +
+
+        selectedProductName +
+
+        "\n\n" +
+
+        "Product Image:\n" +
+
+        imageURL;
+
+
+    const emailURL =
+
+        "mailto:" +
+
+        emailAddress +
+
+        "?subject=" +
+
+        encodeURIComponent(
+            emailSubject
+        ) +
+
+        "&body=" +
+
+        encodeURIComponent(
+            emailBody
+        );
+
+
+    document.getElementById(
+        "emailLink"
+    ).href =
+        emailURL;
+
+}
+
+
+
+/* =====================================================
+   CLOSE POPUP
+====================================================== */
+
+function closeProductModal() {
+
+    document.getElementById(
+        "productModal"
+    ).classList.remove(
+        "active"
+    );
+
+}
+
+
+
+/* =====================================================
+   CLICK OUTSIDE
+====================================================== */
+
+document.addEventListener(
+    "click",
+    function (event) {
+
+
+        const modal =
+            document.getElementById(
+                "productModal"
+            );
+
+
+        if (
+            event.target === modal
+        ) {
+
+            closeProductModal();
+
+        }
+
+    }
+);
+
+
+
+/* =====================================================
+   ESCAPE KEY
+====================================================== */
+
+document.addEventListener(
+    "keydown",
+    function (event) {
+
+
+        if (
+            event.key === "Escape"
+        ) {
+
+            closeProductModal();
+
+        }
+
+    }
+);
+
+</script>
 
 
 </body>

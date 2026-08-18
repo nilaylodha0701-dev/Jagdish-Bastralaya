@@ -1,89 +1,1041 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
     <title>Unisex Items</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Chicle&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="unisex.css">
-    </head>
-    <body>
-        <!-- 🔥 HEADER -->
+
+
+    <!-- GOOGLE FONT -->
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Chicle&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <!-- YOUR EXISTING CSS -->
+
+    <link
+        rel="stylesheet"
+        href="unisex.css"
+    >
+
+
+    <!-- =====================================================
+         ENQUIRY POPUP CSS
+    ====================================================== -->
+
+    <style>
+
+        .product-modal {
+
+            display: none;
+
+            position: fixed;
+
+            top: 0;
+            left: 0;
+
+            width: 100%;
+            height: 100%;
+
+            background: rgba(0, 0, 0, 0.75);
+
+            justify-content: center;
+            align-items: center;
+
+            z-index: 9999;
+
+        }
+
+
+        .product-modal.active {
+
+            display: flex;
+
+        }
+
+
+        .product-modal-box {
+
+            width: 90%;
+            max-width: 400px;
+
+            max-height: 90vh;
+
+            overflow-y: auto;
+
+            background: white;
+
+            border-radius: 15px;
+
+            padding: 20px;
+
+            text-align: center;
+
+            box-sizing: border-box;
+
+        }
+
+
+        .product-modal-image {
+
+            width: 100%;
+            max-width: 280px;
+
+            max-height: 300px;
+
+            object-fit: contain;
+
+            border: 3px solid black;
+
+            border-radius: 10px;
+
+            margin-bottom: 15px;
+
+        }
+
+
+        .product-modal-name {
+
+            font-size: 25px;
+
+            font-weight: bold;
+
+            margin: 10px 0 15px;
+
+            font-family: Arial, sans-serif;
+
+        }
+
+
+        .product-modal-question {
+
+            font-size: 17px;
+
+            line-height: 1.6;
+
+            margin-bottom: 20px;
+
+            font-family: Arial, sans-serif;
+
+        }
+
+
+        .modal-buttons {
+
+            display: flex;
+
+            justify-content: center;
+
+            gap: 15px;
+
+        }
+
+
+        .modal-btn {
+
+            border: none;
+
+            padding: 12px 25px;
+
+            border-radius: 8px;
+
+            font-size: 16px;
+
+            cursor: pointer;
+
+        }
+
+
+        .yes-btn {
+
+            background: #25D366;
+
+            color: white;
+
+        }
+
+
+        .no-btn {
+
+            background: #555;
+
+            color: white;
+
+        }
+
+
+        .contact-question {
+
+            font-size: 17px;
+
+            line-height: 1.6;
+
+            margin-bottom: 15px;
+
+            font-family: Arial, sans-serif;
+
+        }
+
+
+        .contact-buttons {
+
+            display: flex;
+
+            justify-content: center;
+
+            gap: 15px;
+
+            margin-bottom: 15px;
+
+        }
+
+
+        .contact-btn {
+
+            display: inline-block;
+
+            padding: 12px 20px;
+
+            border-radius: 8px;
+
+            text-decoration: none;
+
+            font-size: 16px;
+
+            font-family: Arial, sans-serif;
+
+        }
+
+
+        .whatsapp-btn {
+
+            background: #25D366;
+
+            color: white;
+
+        }
+
+
+        .email-btn {
+
+            background: #4285F4;
+
+            color: white;
+
+        }
+
+
+        .close-modal-btn {
+
+            border: none;
+
+            background: #555;
+
+            color: white;
+
+            padding: 10px 22px;
+
+            border-radius: 8px;
+
+            cursor: pointer;
+
+            font-size: 15px;
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     HEADER
+====================================================== -->
+
 <div class="header">
-    <a href="index.html" class="home-btn">Home</a>
+
+    <a
+        href="index.html"
+        class="home-btn"
+    >
+        Home
+    </a>
+
+
     <select id="genderFilter"></select>
+
 </div>
 
+
+
+<!-- =====================================================
+     GENDER DROPDOWN
+====================================================== -->
+
 <script>
 
-// ================= GENDER =================
 const genders = [
-    { name: "Gents", file: "gents" },
-    { name: "Ladies", file: "ladies" },
-    { name: "Kids", file: "kids" },
-    { name: "Unisex", file: "unisex" }
+
+    {
+        name: "Gents",
+        file: "gents"
+    },
+
+    {
+        name: "Ladies",
+        file: "ladies"
+    },
+
+    {
+        name: "Kids",
+        file: "kids"
+    },
+
+    {
+        name: "Unisex",
+        file: "unisex"
+    }
+
 ];
 
-// ✅ CURRENT PAGE (CHANGE PER PAGE)
+
 const currentGender = "ladies";
 
-// ================= GENDER DROPDOWN =================
-const genderDropdown = document.getElementById("genderFilter");
 
-const savedGender = localStorage.getItem("selectedGender");
+const genderDropdown =
+    document.getElementById("genderFilter");
 
-// 👉 Find selected gender
-const selectedGenderObj = genders.find(g =>
-    g.file === savedGender || g.file === currentGender
-);
 
-// 👉 Show selected
+const savedGender =
+    localStorage.getItem("selectedGender");
+
+
+const selectedGenderObj =
+    genders.find(g =>
+        g.file === savedGender ||
+        g.file === currentGender
+    );
+
+
 if (selectedGenderObj) {
-    const option = document.createElement("option");
-    option.textContent = selectedGenderObj.name;
+
+    const option =
+        document.createElement("option");
+
+    option.textContent =
+        selectedGenderObj.name;
+
     option.selected = true;
+
     genderDropdown.appendChild(option);
+
 }
 
-// 👉 Add remaining genders
+
 genders.forEach(g => {
-    if (g.file !== selectedGenderObj.file) {
-        const option = document.createElement("option");
-        option.value = g.file + ".html";
-        option.textContent = g.name;
+
+    if (
+        !selectedGenderObj ||
+        g.file !== selectedGenderObj.file
+    ) {
+
+        const option =
+            document.createElement("option");
+
+        option.value =
+            g.file + ".html";
+
+        option.textContent =
+            g.name;
+
         genderDropdown.appendChild(option);
+
     }
+
 });
 
-// 👉 Save + redirect
-genderDropdown.addEventListener("change", function () {
-    const file = this.value.replace(".html", "");
-    localStorage.setItem("selectedGender", file);
-    window.location.href = this.value;
-});
+
+genderDropdown.addEventListener(
+    "change",
+    function () {
+
+        const file =
+            this.value.replace(".html", "");
+
+        localStorage.setItem(
+            "selectedGender",
+            file
+        );
+
+        window.location.href =
+            this.value;
+
+    }
+);
+
 </script>
-        <h1 class="ui">UNISEX ITEMS</h1>
-        <div class="products-container">
-        <div class="product-unit">
-            <h2>CYCLING SHORTS</h2>
-        <img src="s1.jpeg" alt="Cycling Shorts" class="product-image">
-        </div>
-        <div class="product-unit">
-            <h2>PERFUME</h2>
-            <div class="image-row">
-                <img src="p1.jpeg" alt="perfume" class="product-image">
-        <img src="p2.jpeg" alt="perfume" class="product-image">
-            </div>
-        </div>
+
+
+
+<!-- =====================================================
+     PRODUCTS
+====================================================== -->
+
+
+<h1 class="ui">
+    UNISEX ITEMS
+</h1>
+
+
+<div class="products-container">
+
+
+    <!-- =================================================
+         CYCLING SHORTS
+    ================================================== -->
+
+    <div class="product-unit">
+
+        <h2>
+            CYCLING SHORTS
+        </h2>
+
+
+        <img
+            src="s1.jpeg"
+            alt="Cycling Shorts"
+            class="product-image"
+            data-product-name="CYCLING SHORTS"
+        >
+
     </div>
-    </body>
-</html>
+
+
+
+    <!-- =================================================
+         PERFUME
+    ================================================== -->
+
+    <div class="product-unit">
+
+        <h2>
+            PERFUME
+        </h2>
+
+
+        <div class="image-row">
+
+
+            <img
+                src="p1.jpeg"
+                alt="Perfume"
+                class="product-image"
+                data-product-name="PERFUME"
+            >
+
+
+            <img
+                src="p2.jpeg"
+                alt="Perfume"
+                class="product-image"
+                data-product-name="PERFUME"
+            >
+
+
+        </div>
+
+    </div>
+
+
+</div>
+
+
+
+<!-- =====================================================
+     PRODUCT ENQUIRY POPUP
+====================================================== -->
+
+<div
+    id="productModal"
+    class="product-modal"
+>
+
+
+    <div class="product-modal-box">
+
+
+        <!-- SELECTED PRODUCT IMAGE -->
+
+        <img
+            id="modalProductImage"
+            class="product-modal-image"
+            src=""
+            alt="Selected Product"
+        >
+
+
+        <!-- PRODUCT NAME -->
+
+        <div
+            id="modalProductName"
+            class="product-modal-name"
+        >
+        </div>
+
+
+        <!-- QUESTION -->
+
+        <div
+            id="productQuestion"
+            class="product-modal-question"
+        >
+
+            Do you want to talk about this product?
+
+            <br>
+
+            क्या आप इस उत्पाद के बारे में बात करना चाहते हैं?
+
+        </div>
+
+
+        <!-- YES / NO -->
+
+        <div
+            id="questionButtons"
+            class="modal-buttons"
+        >
+
+            <button
+                class="modal-btn yes-btn"
+                onclick="showContactOptions()"
+            >
+                Yes (हाँ)
+            </button>
+
+
+            <button
+                class="modal-btn no-btn"
+                onclick="closeProductModal()"
+            >
+                No (नहीं)
+            </button>
+
+        </div>
+
+
+        <!-- CONTACT OPTIONS -->
+
+        <div
+            id="contactOptions"
+            style="display:none;"
+        >
+
+
+            <div class="contact-question">
+
+                Choose how you want to contact us
+
+                <br>
+
+                संपर्क करने का माध्यम चुनें
+
+            </div>
+
+
+            <div class="contact-buttons">
+
+
+                <a
+                    id="whatsappLink"
+                    class="contact-btn whatsapp-btn"
+                    href="#"
+                    target="_blank"
+                >
+                    WhatsApp
+                </a>
+
+
+                <a
+                    id="emailLink"
+                    class="contact-btn email-btn"
+                    href="#"
+                >
+                    Email
+                </a>
+
+
+            </div>
+
+
+            <button
+                class="close-modal-btn"
+                onclick="closeProductModal()"
+            >
+                Close
+            </button>
+
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     FOOTER
+====================================================== -->
+
 <footer class="footer">
-  <p>&copy; <span id="year"></span> Jagdish Bastralaya. All rights reserved.</p>
+
+    <p>
+
+        &copy;
+
+        <span id="year"></span>
+
+        Jagdish Bastralaya.
+
+        All rights reserved.
+
+    </p>
+
+</footer>
+
+
+
+<!-- =====================================================
+     ENQUIRY JAVASCRIPT
+====================================================== -->
 
 <script>
-  document.getElementById("year").textContent = new Date().getFullYear();
+
+
+/* =====================================================
+   CONTACT DETAILS
+====================================================== */
+
+
+const whatsappNumber =
+    "919234748585";
+
+
+const emailAddress =
+    "jagdishbastralaya1977@gmail.com";
+
+
+
+/* =====================================================
+   SELECTED PRODUCT
+====================================================== */
+
+
+let selectedProductName = "";
+
+let selectedProductImage = "";
+
+
+
+/* =====================================================
+   PAGE LOADED
+====================================================== */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+
+        /* ===============================
+           FOOTER YEAR
+        =============================== */
+
+        document.getElementById("year")
+            .textContent =
+            new Date().getFullYear();
+
+
+
+        /* ===============================
+           FIND ALL PRODUCT IMAGES
+        =============================== */
+
+        const productImages =
+            document.querySelectorAll(
+                ".product-image"
+            );
+
+
+
+        /* ===============================
+           MAKE IMAGES CLICKABLE
+        =============================== */
+
+        productImages.forEach(
+            function (image) {
+
+
+                image.style.cursor =
+                    "pointer";
+
+
+                image.addEventListener(
+                    "click",
+                    function () {
+
+                        openProductModal(this);
+
+                    }
+                );
+
+            }
+        );
+
+    }
+);
+
+
+
+/* =====================================================
+   OPEN PRODUCT POPUP
+====================================================== */
+
+function openProductModal(image) {
+
+
+    /* ===============================
+       GET PRODUCT NAME
+    =============================== */
+
+    selectedProductName =
+        image.getAttribute(
+            "data-product-name"
+        );
+
+
+
+    /* ===============================
+       GET IMAGE
+    =============================== */
+
+    selectedProductImage =
+        image.src;
+
+
+
+    /* ===============================
+       MODAL
+    =============================== */
+
+    const modal =
+        document.getElementById(
+            "productModal"
+        );
+
+
+
+    /* ===============================
+       SHOW IMAGE
+    =============================== */
+
+    document.getElementById(
+        "modalProductImage"
+    ).src =
+        selectedProductImage;
+
+
+
+    /* ===============================
+       SHOW PRODUCT NAME
+    =============================== */
+
+    document.getElementById(
+        "modalProductName"
+    ).textContent =
+        selectedProductName;
+
+
+
+    /* ===============================
+       SHOW QUESTION
+    =============================== */
+
+    document.getElementById(
+        "productQuestion"
+    ).style.display =
+        "block";
+
+
+    document.getElementById(
+        "questionButtons"
+    ).style.display =
+        "flex";
+
+
+
+    /* ===============================
+       HIDE CONTACT OPTIONS
+    =============================== */
+
+    document.getElementById(
+        "contactOptions"
+    ).style.display =
+        "none";
+
+
+
+    /* ===============================
+       SHOW MODAL
+    =============================== */
+
+    modal.classList.add("active");
+
+}
+
+
+
+/* =====================================================
+   YES BUTTON
+====================================================== */
+
+function showContactOptions() {
+
+
+    /* ===============================
+       HIDE QUESTION
+    =============================== */
+
+    document.getElementById(
+        "productQuestion"
+    ).style.display =
+        "none";
+
+
+    document.getElementById(
+        "questionButtons"
+    ).style.display =
+        "none";
+
+
+
+    /* ===============================
+       SHOW CONTACT OPTIONS
+    =============================== */
+
+    document.getElementById(
+        "contactOptions"
+    ).style.display =
+        "block";
+
+
+
+    /* =================================================
+       IMAGE URL
+    ================================================== */
+
+    const imageURL =
+        new URL(
+            selectedProductImage,
+            window.location.href
+        ).href;
+
+
+
+    /* =================================================
+       WHATSAPP MESSAGE
+    ================================================== */
+
+    const whatsappMessage =
+
+        "Hello Jagdish Bastralaya,\n\n" +
+
+        "I want to know more about this product.\n\n" +
+
+        "Product Name: " +
+
+        selectedProductName +
+
+        "\n\n" +
+
+        "Product image:\n" +
+
+        imageURL;
+
+
+
+    const whatsappURL =
+
+        "https://wa.me/" +
+
+        whatsappNumber +
+
+        "?text=" +
+
+        encodeURIComponent(
+            whatsappMessage
+        );
+
+
+
+    document.getElementById(
+        "whatsappLink"
+    ).href =
+        whatsappURL;
+
+
+
+    /* =================================================
+       EMAIL
+    ================================================== */
+
+    const emailSubject =
+
+        "Product Enquiry - " +
+
+        selectedProductName;
+
+
+
+    const emailBody =
+
+        "Hello Jagdish Bastralaya,\n\n" +
+
+        "I want to know more about this product.\n\n" +
+
+        "Product Name: " +
+
+        selectedProductName +
+
+        "\n\n" +
+
+        "Product image:\n" +
+
+        imageURL;
+
+
+
+    const emailURL =
+
+        "mailto:" +
+
+        emailAddress +
+
+        "?subject=" +
+
+        encodeURIComponent(
+            emailSubject
+        ) +
+
+        "&body=" +
+
+        encodeURIComponent(
+            emailBody
+        );
+
+
+
+    document.getElementById(
+        "emailLink"
+    ).href =
+        emailURL;
+
+}
+
+
+
+/* =====================================================
+   CLOSE POPUP
+====================================================== */
+
+function closeProductModal() {
+
+    document.getElementById(
+        "productModal"
+    ).classList.remove(
+        "active"
+    );
+
+}
+
+
+
+/* =====================================================
+   CLICK OUTSIDE POPUP
+====================================================== */
+
+document.addEventListener(
+    "click",
+    function (event) {
+
+
+        const modal =
+            document.getElementById(
+                "productModal"
+            );
+
+
+        if (
+            event.target === modal
+        ) {
+
+            closeProductModal();
+
+        }
+
+    }
+);
+
+
+
+/* =====================================================
+   ESCAPE KEY
+====================================================== */
+
+document.addEventListener(
+    "keydown",
+    function (event) {
+
+
+        if (
+            event.key === "Escape"
+        ) {
+
+            closeProductModal();
+
+        }
+
+    }
+);
+
 </script>
-</footer>
+
+
+</body>
+
+</html>

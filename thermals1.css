@@ -1,0 +1,104 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f5f5f5;
+    overflow-x: hidden;
+    background-image: url('clothes.avif');
+    background-size: cover;      
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+.name{
+    font-family: "Pirata One", system-ui;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 150px;
+  background-color: white;
+  padding: 10px 20px;
+  animation: riseBottom 1.5s ease;
+    position: relative; 
+    text-align: center;
+    margin-top: 200px;
+    border: 3px solid black;
+    border-radius: 50px;
+}
+.footer {
+  text-align: center;
+}
+.header {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    
+}
+
+select {
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+.home-btn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 5%;
+    width: 90%;
+    height: 55%;
+
+    background: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.85),
+        rgba(255, 255, 255, 0.2),
+        transparent
+    );
+
+    border-radius: 50px;
+    pointer-events: none;
+}
+.home-btn {
+    position: absolute;
+    top: 10px;
+    left: 20px;
+
+    text-decoration: none;
+    font-weight: bold;
+    color: #222;
+
+    padding: 10px 22px;
+    border-radius: 50px;
+
+    /* 🔥 Stronger 3D surface gradient */
+    background: linear-gradient(
+        145deg,
+        #ffffff 0%,
+        #f0f0f0 40%,
+        #dcdcdc 100%
+    );
+
+    /* 🧱 Deep embossed effect */
+    box-shadow:
+        inset 4px 4px 8px rgba(255, 255, 255, 1),   /* strong top highlight */
+        inset -8px -8px 14px rgba(0, 0, 0, 0.2),   /* deeper inner shadow */
+        4px 4px 10px rgba(0, 0, 0, 0.15),           /* outer soft shadow */
+        -3px -3px 8px rgba(255, 255, 255, 0.9);     /* outer glow */
+
+    border: 1px solid rgba(0, 0, 0, 0.08);
+
+    backdrop-filter: blur(3px);
+
+    transition: all 0.2s ease;
+    overflow: hidden;
+}
+.home-btn:active {
+    box-shadow:
+        inset 6px 6px 10px rgba(0, 0, 0, 0.2),
+        inset -3px -3px 6px rgba(255, 255, 255, 0.8);
+
+    transform: scale(0.96);
+}
+
+/* keep header as it is */
+.header {
+    position: relative;
+}

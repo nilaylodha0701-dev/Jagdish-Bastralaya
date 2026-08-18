@@ -1,0 +1,168 @@
+body {
+            margin: 0;
+            min-height: 100vh;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            padding-top: 40px;
+
+            background-image: url('clothes.avif');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .title {
+            font-family: "Chicle", cursive;
+            font-size: 28px;
+
+            padding: 12px 30px;
+            background: white;
+            border: 3px solid black;
+            border-radius: 50px;
+
+            margin: 15px 0;
+            text-align: center;
+        }
+
+        .product-row {
+            display: flex;
+            flex-direction: column; /* mobile */
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+
+            width: 100%;
+        }
+
+        .product-row img {
+    width: 80%;
+    max-width: 250px;
+    aspect-ratio: 3 / 4;   /* 🔥 THIS fixes the ratio */
+    object-fit: cover;
+
+    border-radius: 10px;
+    border: 2px solid black;   /* 🔥 border added */
+    
+}
+.product {
+    font-family: "Chicle", cursive;
+    display: flex;
+    padding: 12px 30px;
+            background: white;
+            border: 3px solid black;
+            border-radius: 50px;
+    flex-direction: column;
+    align-items: center;
+}
+.girl-pant {
+    aspect-ratio: 4 / 3;  /* landscape ratio */
+    object-fit: cover;    /* keeps the image properly cropped */
+    width: 80%;
+    max-width: 250px;
+
+    border-radius: 10px;
+    border: 2px solid black;
+}
+
+      @media (min-width: 768px) {
+    .product-row {
+        flex-direction: row;
+        justify-content: center;
+        gap: 40px;
+    }
+
+    .product-row img {
+        width: 180px;
+    }
+}
+@media (min-width: 768px) {
+    .girl-pant {
+        width: 180px;
+    }
+}/* GIRL PANT OVERRIDE */
+.product-row img.girl-pant {
+    aspect-ratio: 4 / 3 !important;  /* use !important to force override */
+    object-fit: cover;
+    width: 80%;
+    max-width: 250px;
+}
+.header {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end; /* right side */
+    align-items: center;
+    box-sizing: border-box;
+}
+
+select {
+    margin-left: 10px;
+    padding: 6px; /* small clean padding */
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+.home-btn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 5%;
+    width: 90%;
+    height: 55%;
+
+    background: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.85),
+        rgba(255, 255, 255, 0.2),
+        transparent
+    );
+
+    border-radius: 50px;
+    pointer-events: none;
+}
+.home-btn {
+    position: absolute;
+    top: 10px;
+    left: 20px;
+
+    text-decoration: none;
+    font-weight: bold;
+    color: #222;
+
+    padding: 10px 22px;
+    border-radius: 50px;
+
+    /* 🔥 Stronger 3D surface gradient */
+    background: linear-gradient(
+        145deg,
+        #ffffff 0%,
+        #f0f0f0 40%,
+        #dcdcdc 100%
+    );
+
+    /* 🧱 Deep embossed effect */
+    box-shadow:
+        inset 4px 4px 8px rgba(255, 255, 255, 1),   /* strong top highlight */
+        inset -8px -8px 14px rgba(0, 0, 0, 0.2),   /* deeper inner shadow */
+        4px 4px 10px rgba(0, 0, 0, 0.15),           /* outer soft shadow */
+        -3px -3px 8px rgba(255, 255, 255, 0.9);     /* outer glow */
+
+    border: 1px solid rgba(0, 0, 0, 0.08);
+
+    backdrop-filter: blur(3px);
+
+    transition: all 0.2s ease;
+    overflow: hidden;
+}
+.home-btn:active {
+    box-shadow:
+        inset 6px 6px 10px rgba(0, 0, 0, 0.2),
+        inset -3px -3px 6px rgba(255, 255, 255, 0.8);
+
+    transform: scale(0.96);
+}
+
+/* keep header as it is */
+.header {
+    position: relative;
+}

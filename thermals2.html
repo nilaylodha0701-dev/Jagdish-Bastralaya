@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Thermals</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pirata+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="thermals2.css">
+</head>
+<body>
+    <!-- 🔥 HEADER -->
+<div class="header">
+    <a href="index.html" class="home-btn">Home</a>
+    <select id="categoryFilter"></select>
+    <select id="genderFilter"></select>
+</div>
+
+<script>
+// ================= CATEGORY =================
+const categories = [
+    { name: "Undergarments", file: "inner2" },
+    { name: "Upper", file: "upper2" },
+    { name: "Lower", file: "lower2" },
+    { name: "Suit", file: "suit" },
+    { name: "Thermals", file: "thermals2" }
+];
+
+// ================= GENDER =================
+const genders = [
+    { name: "Gents", file: "gents" },
+    { name: "Ladies", file: "ladies" },
+    { name: "Kids", file: "kids" },
+    { name: "Unisex", file: "unisex" }
+];
+
+// ✅ CURRENT PAGE (CHANGE PER PAGE)
+const currentCategory = "thermals2";
+const currentGender = "kids";
+
+// ================= CATEGORY DROPDOWN =================
+const categoryDropdown = document.getElementById("categoryFilter");
+
+const savedCategory = localStorage.getItem("selectedCategory");
+
+// 👉 Find selected category
+const selectedCat = categories.find(cat =>
+    cat.file === savedCategory || cat.file === currentCategory
+);
+
+// 👉 Show selected on top
+if (selectedCat) {
+    const option = document.createElement("option");
+    option.textContent = selectedCat.name;
+    option.selected = true;
+    categoryDropdown.appendChild(option);
+}
+
+// 👉 Add remaining categories
+categories.forEach(cat => {
+    if (cat.file !== selectedCat.file) {
+        const option = document.createElement("option");
+        option.value = cat.file + ".html";
+        option.textContent = cat.name;
+        categoryDropdown.appendChild(option);
+    }
+});
+
+// 👉 Save + redirect
+categoryDropdown.addEventListener("change", function () {
+    const file = this.value.replace(".html", "");
+    localStorage.setItem("selectedCategory", file);
+    window.location.href = this.value;
+});
+
+
+// ================= GENDER DROPDOWN =================
+const genderDropdown = document.getElementById("genderFilter");
+
+const savedGender = localStorage.getItem("selectedGender");
+
+// 👉 Find selected gender
+const selectedGenderObj = genders.find(g =>
+    g.file === savedGender || g.file === currentGender
+);
+
+// 👉 Show selected
+if (selectedGenderObj) {
+    const option = document.createElement("option");
+    option.textContent = selectedGenderObj.name;
+    option.selected = true;
+    genderDropdown.appendChild(option);
+}
+
+// 👉 Add remaining genders
+genders.forEach(g => {
+    if (g.file !== selectedGenderObj.file) {
+        const option = document.createElement("option");
+        option.value = g.file + ".html";
+        option.textContent = g.name;
+        genderDropdown.appendChild(option);
+    }
+});
+
+// 👉 Save + redirect
+genderDropdown.addEventListener("change", function () {
+    const file = this.value.replace(".html", "");
+    localStorage.setItem("selectedGender", file);
+    window.location.href = this.value;
+});
+</script>
+    <div class="title">
+        <h1 class="name">COMMING SOON.....</h1>
+    </div>
+</body>
+</html>
+<footer class="footer">
+  <p>&copy; <span id="year"></span> Jagdish Bastralaya. All rights reserved.</p>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+</footer>

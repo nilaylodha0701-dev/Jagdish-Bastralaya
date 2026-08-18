@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Undergarment</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chicle&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="inner.css">
+</head>
+<body>
+<!-- 🔥 HEADER -->
+<div class="header">
+    <a href="index.html" class="home-btn">Home</a>
+    <select id="categoryFilter"></select>
+    <select id="genderFilter"></select>
+</div>
+
+<script>
+// ================= CATEGORY =================
+const categories = [
+    { name: "Undergarments", file: "inner" },
+    { name: "Upper", file: "upper" },
+    { name: "Lower", file: "lower" },
+    { name: "Thermals", file: "thermals" }
+];
+
+// ================= GENDER =================
+const genders = [
+    { name: "Gents", file: "gents" },
+    { name: "Ladies", file: "ladies" },
+    { name: "Kids", file: "kids" },
+    { name: "Unisex", file: "unisex" }
+];
+
+// ✅ CURRENT PAGE (CHANGE PER PAGE)
+const currentCategory = "inner";
+const currentGender = "gents";
+
+// ================= CATEGORY DROPDOWN =================
+const categoryDropdown = document.getElementById("categoryFilter");
+
+const savedCategory = localStorage.getItem("selectedCategory");
+
+// 👉 Find selected category
+const selectedCat = categories.find(cat =>
+    cat.file === savedCategory || cat.file === currentCategory
+);
+
+// 👉 Show selected on top
+if (selectedCat) {
+    const option = document.createElement("option");
+    option.textContent = selectedCat.name;
+    option.selected = true;
+    categoryDropdown.appendChild(option);
+}
+
+// 👉 Add remaining categories
+categories.forEach(cat => {
+    if (cat.file !== selectedCat.file) {
+        const option = document.createElement("option");
+        option.value = cat.file + ".html";
+        option.textContent = cat.name;
+        categoryDropdown.appendChild(option);
+    }
+});
+
+// 👉 Save + redirect
+categoryDropdown.addEventListener("change", function () {
+    const file = this.value.replace(".html", "");
+    localStorage.setItem("selectedCategory", file);
+    window.location.href = this.value;
+});
+
+
+// ================= GENDER DROPDOWN =================
+const genderDropdown = document.getElementById("genderFilter");
+
+const savedGender = localStorage.getItem("selectedGender");
+
+// 👉 Find selected gender
+const selectedGenderObj = genders.find(g =>
+    g.file === savedGender || g.file === currentGender
+);
+
+// 👉 Show selected
+if (selectedGenderObj) {
+    const option = document.createElement("option");
+    option.textContent = selectedGenderObj.name;
+    option.selected = true;
+    genderDropdown.appendChild(option);
+}
+
+// 👉 Add remaining genders
+genders.forEach(g => {
+    if (g.file !== selectedGenderObj.file) {
+        const option = document.createElement("option");
+        option.value = g.file + ".html";
+        option.textContent = g.name;
+        genderDropdown.appendChild(option);
+    }
+});
+
+// 👉 Save + redirect
+genderDropdown.addEventListener("change", function () {
+    const file = this.value.replace(".html", "");
+    localStorage.setItem("selectedGender", file);
+    window.location.href = this.value;
+});
+</script>
+<h2>WHITE VEST</h2>
+<div class="row">
+    <img src="Screenshot 2026-04-06 213251.png">
+    <img src="Screenshot 2026-04-06 213806.png">
+    <img src="4.jpeg">
+</div>
+<h2>COLOUR VEST</h2>
+<div class="row">
+    <img src="Screenshot 2026-04-06 213333.png">
+
+    <!-- Image with centered label -->
+    <div class="img-label">
+        <img src="9.jpeg">
+        <span>BLACK, GREY & WHITE</span>
+    </div>
+</div>
+
+<h2>HALF BRIEF</h2>
+<div class="row">
+    <img src="3.jpeg">
+    <img src="q1.jpeg">
+</div>
+
+<h2>MEDIUM BRIEF</h2>
+<div class="row">
+    <img src="1.jpeg">
+    <img src="2.jpeg">
+    <img src="5.jpeg">
+    <img src="q3.jpeg">
+</div>
+
+<h2>FULL BRIEF</h2>
+<div class="row">
+    <img src="q2.jpeg">
+    <img src="10.jpeg">
+</div>
+
+</body>
+</html>
+<footer>
+  <p>&copy; <span id="year"></span> Jagdish Bastralaya. All rights reserved.</p>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+</footer>

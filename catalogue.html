@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Our Catalogue</title>
+
+
+    <!-- Google Font -->
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Pirata+One&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <!-- Catalogue CSS -->
+    <link
+        rel="stylesheet"
+        href="catalogue.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         CATALOGUE CATEGORIES
+    ====================================================== -->
+
+    <div class="catalogue-container">
+
+
+        <!-- =================================================
+             GENTS
+        ================================================== -->
+
+        <a
+            href="gents.html"
+            class="category-card"
+            onclick="handleClick(event)"
+        >
+
+            <div class="category-image-box">
+
+                <img
+                    src="dp.jpeg.png"
+                    alt="Gents Clothing"
+                    class="category-image"
+                >
+
+            </div>
+
+
+            <div class="category-name">
+                Gents
+            </div>
+
+        </a>
+
+
+
+        <!-- =================================================
+             LADIES
+        ================================================== -->
+
+        <a
+            href="ladies.html"
+            class="category-card"
+            onclick="handleClick(event)"
+        >
+
+            <div class="category-image-box">
+
+                <img
+                    src="dpf.jpeg.png"
+                    alt="Ladies Clothing"
+                    class="category-image"
+                >
+
+            </div>
+
+
+            <div class="category-name">
+                Ladies
+            </div>
+
+        </a>
+
+
+
+        <!-- =================================================
+             KIDS
+        ================================================== -->
+
+        <a
+            href="kids.html"
+            class="category-card"
+            onclick="handleClick(event)"
+        >
+
+            <div class="category-image-box">
+
+                <img
+                    src="dpk.jpeg.png"
+                    alt="Kids Clothing"
+                    class="category-image"
+                >
+
+            </div>
+
+
+            <div class="category-name">
+                Kids
+            </div>
+
+        </a>
+
+
+
+        <!-- =================================================
+             UNISEX
+        ================================================== -->
+
+        <a
+            href="unisex.html"
+            class="category-card"
+            onclick="handleClick(event)"
+        >
+
+            <div class="category-image-box">
+
+                <img
+                    src="dpu.jpeg.png"
+                    alt="Unisex Clothing"
+                    class="category-image"
+                >
+
+            </div>
+
+
+            <div class="category-name">
+                Unisex
+            </div>
+
+        </a>
+
+
+    </div>
+
+
+
+    <!-- =====================================================
+         CLICK ANIMATION
+    ====================================================== -->
+
+    <script>
+
+        function handleClick(event) {
+
+            event.preventDefault();
+
+            const card = event.currentTarget;
+
+            card.classList.add("clicked");
+
+
+            setTimeout(function () {
+
+                window.location.href = card.href;
+
+            }, 350);
+
+        }
+
+    </script>
+
+
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer class="footer">
+
+        <p>
+
+            &copy;
+
+            <span id="year"></span>
+
+            Jagdish Bastralaya.
+
+            All rights reserved.
+
+        </p>
+
+    </footer>
+
+
+
+    <!-- =====================================================
+         YEAR
+    ====================================================== -->
+
+    <script>
+
+        document.getElementById("year").textContent =
+            new Date().getFullYear();
+
+    </script>
+
+
+</body>
+
+</html>

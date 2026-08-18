@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lower</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chicle&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="lower.css">
+</head>
+
+<body>
+<!-- 🔥 HEADER -->
+<div class="header">
+    <a href="index.html" class="home-btn">Home</a>
+    <select id="categoryFilter"></select>
+    <select id="genderFilter"></select>
+</div>
+
+<script>
+// ================= CATEGORY =================
+const categories = [
+    { name: "Undergarments", file: "inner" },
+    { name: "Upper", file: "upper" },
+    { name: "Lower", file: "lower" },
+    { name: "Thermals", file: "thermals" }
+];
+
+// ================= GENDER =================
+const genders = [
+    { name: "Gents", file: "gents" },
+    { name: "Ladies", file: "ladies" },
+    { name: "Kids", file: "kids" },
+    { name: "Unisex", file: "unisex" }
+];
+
+// ✅ CURRENT PAGE (CHANGE PER PAGE)
+const currentCategory = "lower";
+const currentGender = "gents";
+
+// ================= CATEGORY DROPDOWN =================
+const categoryDropdown = document.getElementById("categoryFilter");
+
+const savedCategory = localStorage.getItem("selectedCategory");
+
+// 👉 Find selected category
+const selectedCat = categories.find(cat =>
+    cat.file === savedCategory || cat.file === currentCategory
+);
+
+// 👉 Show selected on top
+if (selectedCat) {
+    const option = document.createElement("option");
+    option.textContent = selectedCat.name;
+    option.selected = true;
+    categoryDropdown.appendChild(option);
+}
+
+// 👉 Add remaining categories
+categories.forEach(cat => {
+    if (cat.file !== selectedCat.file) {
+        const option = document.createElement("option");
+        option.value = cat.file + ".html";
+        option.textContent = cat.name;
+        categoryDropdown.appendChild(option);
+    }
+});
+
+// 👉 Save + redirect
+categoryDropdown.addEventListener("change", function () {
+    const file = this.value.replace(".html", "");
+    localStorage.setItem("selectedCategory", file);
+    window.location.href = this.value;
+});
+
+
+// ================= GENDER DROPDOWN =================
+const genderDropdown = document.getElementById("genderFilter");
+
+const savedGender = localStorage.getItem("selectedGender");
+
+// 👉 Find selected gender
+const selectedGenderObj = genders.find(g =>
+    g.file === savedGender || g.file === currentGender
+);
+
+// 👉 Show selected
+if (selectedGenderObj) {
+    const option = document.createElement("option");
+    option.textContent = selectedGenderObj.name;
+    option.selected = true;
+    genderDropdown.appendChild(option);
+}
+
+// 👉 Add remaining genders
+genders.forEach(g => {
+    if (g.file !== selectedGenderObj.file) {
+        const option = document.createElement("option");
+        option.value = g.file + ".html";
+        option.textContent = g.name;
+        genderDropdown.appendChild(option);
+    }
+});
+
+// 👉 Save + redirect
+genderDropdown.addEventListener("change", function () {
+    const file = this.value.replace(".html", "");
+    localStorage.setItem("selectedGender", file);
+    window.location.href = this.value;
+});
+</script>
+    <h3 class="title">HALF PANT</h3>
+
+    <div class="image-grid">
+
+        <div class="item">
+            <img src="hp1.jpeg" alt="">
+            <p class="img-name">BOXER</p>
+        </div>
+
+        <div class="item">
+            <img src="hp2.jpeg" alt="">
+            <p class="img-name">BOXER</p>
+        </div>
+
+        <div class="item">
+            <img src="hp3.jpeg" alt="">
+            <p class="img-name">COTTON</p>
+        </div>
+
+        <div class="item">
+            <img src="hp5.jpeg" alt="">
+            <p class="img-name">COTTON</p>
+        </div>
+
+        <div class="item">
+            <img src="hp4.jpeg" alt="">
+            <p class="img-name">SPORTS</p>
+        </div>
+
+        <div class="item">
+            <img src="a1.jpeg" alt="">
+            
+        </div>
+
+    </div>
+
+    <h3 class="title">3/4th PANT</h3>
+
+    <div class="image-grid-3">
+
+        <div class="item">
+            <img src="cp1.jpeg" alt="">
+        </div>
+
+        <div class="item">
+            <img src="cp2.jpeg" alt="">
+        </div>
+
+        <div class="item">
+            <img src="a1.jpeg" alt="">
+        </div>
+
+    </div>
+
+    <h3 class="title">TROUSER</h3>
+
+    <div class="image-grid-trouser">
+
+        <div class="item">
+            <img src="t1.jpeg" alt="">
+            <p class="img-name">DOUBLE RIB COTTON</p>
+        </div>
+
+        <div class="item">
+            <img src="t2.jpeg" alt="">
+            <p class="img-name">SINGLE RIB SPORTS</p>
+        </div>
+
+        <div class="item">
+            <img src="t3.jpeg" alt="">
+            <p class="img-name">SINGLE RIB COTTON</p>
+        </div>
+
+        <div class="item">
+            <img src="a1.jpeg" alt="">
+        </div>
+
+    </div>
+
+    <h3 class="title">TROUSER</h3>
+
+    <div class="image-grid-trouser">
+
+        <div class="item">
+            <img src="c.jpeg" alt="">
+            <p class="img-name">SINGLE RIB CARGO</p>
+        </div>
+
+        <div class="item">
+            <img src="c1.jpeg" alt="">
+            <p class="img-name">FIVE POCKET CARGO</p>
+        </div>
+
+        <div class="item">
+            <img src="c2.jpeg.png" alt="">
+            <p class="img-name">TEXTURED CARGO</p>
+        </div>
+
+        <div class="item">
+            <img src="a1.jpeg" alt="">
+        </div>
+
+    </div>
+
+    <h3 class="title">FORMAL & JEANS</h3>
+    <div class="image-grid-formal">
+
+    <div class="item">
+        <img src="fp2.jpeg" alt="">
+        <p class="img-name">FORMAL</p>
+    </div>
+
+    <div class="item">
+        <img src="fp4.jpeg" alt="">
+        <p class="img-name"> BAGGY</p>
+    </div>
+
+    <div class="item">
+        <img src="fp6.jpeg" alt="">
+        <p class="img-name">JEANS</p>
+    </div>
+
+    <div class="item">
+        <img src="fp10.jpeg" alt="">
+        <p class="img-name">COTTON PANT</p>
+    </div>
+
+    <div class="item">
+        <img src="a1.jpeg" alt="">
+    </div>
+
+</div>
+
+    <footer>
+        <p>&copy; <span id="year"></span> Jagdish Bastralaya. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+
+</body>
+</html>

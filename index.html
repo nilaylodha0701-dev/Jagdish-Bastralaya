@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Jagdish Vastralaya</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Pirata+One&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         LOGO
+    ====================================================== -->
+
+    <div class="logo-box">
+
+        <img
+            src="jb.jpeg"
+            alt="Jagdish Vastralaya Logo"
+            class="top-image"
+        >
+
+    </div>
+
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+    ====================================================== -->
+
+    <div class="container">
+
+        <h1 class="title">
+            Jagdish Bastralaya
+        </h1>
+
+
+        <p class="subtitle">
+            A house for all types of clothing
+        </p>
+
+
+        <!-- Catalogue -->
+
+        <a
+            href="catalogue.html"
+            class="catalogue-btn"
+        >
+            Our Catalogue
+        </a>
+
+
+        <!-- =================================================
+             SUPPORT BUTTONS
+        ================================================== -->
+
+        <div class="support-buttons">
+
+            <!-- Google Maps -->
+    <a
+        href="https://www.google.com/maps/dir/?api=1&destination=22.6573452%2C86.3457361&travelmode=driving&dir_action=navigate"
+        class="support-btn maps-btn"
+        target="_blank"
+    >
+    <img
+    src="https://www.gstatic.com/images/branding/product/2x/maps_96dp.png"
+    alt="Google Maps"
+    class="google-maps-icon"
+>
+
+        <span>Get Directions</span>
+    </a>
+
+            <!-- WhatsApp Support -->
+
+            <a
+                href="#"
+                class="support-btn whatsapp-btn"
+                id="whatsappButton"
+            >
+
+                <i class="fa-brands fa-whatsapp"></i>
+
+                <span>
+                    WhatsApp Support
+                </span>
+
+            </a>
+
+
+            <!-- Email Support -->
+
+            <a
+                href="mailto:jagdishbastralaya1977@gmail.com?subject=Support%20Request%20-%20Jagdish%20Bastralaya"
+                class="support-btn email-btn"
+            >
+
+                <i class="fa-solid fa-envelope"></i>
+
+                <span>
+                    Email Support
+                </span>
+
+            </a>
+
+    <a
+        href="about.html"
+        class="about-us-btn"
+    >
+        <i class="fa-solid fa-circle-info"></i>
+
+        <span>
+            About Us
+        </span>
+    </a>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         WHATSAPP LANGUAGE POPUP
+    ====================================================== -->
+
+    <div
+        class="language-overlay"
+        id="languageOverlay"
+    >
+
+        <div class="language-popup">
+
+
+            <!-- Close Button -->
+
+            <button
+                class="close-language"
+                id="closeLanguage"
+                aria-label="Close"
+            >
+                &times;
+            </button>
+
+
+            <!-- WhatsApp Icon -->
+
+            <div class="language-icon">
+
+                <i class="fa-brands fa-whatsapp"></i>
+
+            </div>
+
+
+            <h2>
+                Choose Your Language
+            </h2>
+
+
+            <p>
+                Select your preferred language for WhatsApp support.
+            </p>
+
+
+            <!-- Language Buttons -->
+
+            <div class="language-list">
+
+
+                <!-- English -->
+
+                <button
+                    class="language-option"
+                    data-message="Hello Jagdish Bastralaya, I would like to know more about your clothing collection."
+                >
+
+                    🇬🇧 English
+
+                </button>
+
+
+                <!-- Hindi -->
+
+                <button
+                    class="language-option"
+                    data-message="नमस्ते जगदीश बस्त्रालय, मुझे आपके कपड़ों के कलेक्शन के बारे में जानकारी चाहिए।"
+                >
+
+                    🇮🇳 हिंदी
+
+                </button>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer class="footer">
+
+        <p>
+
+            &copy;
+
+            <span id="year"></span>
+
+            Jagdish Bastralaya.
+
+            All rights reserved.
+
+        </p>
+
+    </footer>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <script>
+
+
+        /* =================================================
+           CURRENT YEAR
+        ================================================= */
+
+        document.getElementById("year").textContent =
+            new Date().getFullYear();
+
+
+
+        /* =================================================
+           WHATSAPP POPUP
+        ================================================= */
+
+        const whatsappButton =
+            document.getElementById("whatsappButton");
+
+        const languageOverlay =
+            document.getElementById("languageOverlay");
+
+        const closeLanguage =
+            document.getElementById("closeLanguage");
+
+        const languageOptions =
+            document.querySelectorAll(".language-option");
+
+
+
+        /* Open popup */
+
+        whatsappButton.addEventListener("click", function(event) {
+
+            event.preventDefault();
+
+            languageOverlay.classList.add("show");
+
+            document.body.classList.add("popup-open");
+
+        });
+
+
+
+        /* Close popup */
+
+        closeLanguage.addEventListener("click", function() {
+
+            languageOverlay.classList.remove("show");
+
+            document.body.classList.remove("popup-open");
+
+        });
+
+
+
+        /* Close by clicking outside */
+
+        languageOverlay.addEventListener("click", function(event) {
+
+            if (event.target === languageOverlay) {
+
+                languageOverlay.classList.remove("show");
+
+                document.body.classList.remove("popup-open");
+
+            }
+
+        });
+
+
+
+        /* =================================================
+           WHATSAPP LANGUAGE SELECTION
+        ================================================= */
+
+        languageOptions.forEach(function(button) {
+
+            button.addEventListener("click", function() {
+
+                const message =
+                    button.getAttribute("data-message");
+
+
+                /*
+                 * REPLACE THIS WITH YOUR
+                 * ACTUAL WHATSAPP NUMBER.
+                 *
+                 * Example:
+                 * 919876543210
+                 */
+
+                const phoneNumber =
+                    "919234748585";
+
+
+                const whatsappURL =
+                    "https://wa.me/" +
+                    phoneNumber +
+                    "?text=" +
+                    encodeURIComponent(message);
+
+
+                window.open(
+                    whatsappURL,
+                    "_blank"
+                );
+
+            });
+
+        });
+
+    </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,230 @@
+body {
+    margin: 0;
+    height: 160vh;
+
+    display: flex;
+    flex-direction: column; /* stack vertically */
+    align-items: center;    /* center horizontally */
+    justify-content: flex-start;
+
+    padding-top: 40px;
+
+    background-image: url('clothes.avif');
+    background-size: cover;
+    background-position: center;
+    background-repeat: repeat-y;
+}
+.title {
+    font-family: "Chicle", cursive;
+    font-size: 40px;
+
+    display: inline-block;
+    padding: 15px 40px;
+
+    color: black;
+    background-color: white;
+
+    border: 3px solid black;
+    border-radius: 50px;
+    margin: 10px 0; /* space between texts */
+}
+.grid {
+  display: flex;        /* better for custom widths */
+  gap: 15px;            /* equal spacing */
+  align-items: flex-start;
+}
+
+.grid img {
+  display: block;
+}
+
+/* Custom widths */
+.imgs {
+  width: 180px;
+  height: 260px;
+}
+
+.imgm {
+  width: 190px;
+  height: 260px;
+}
+.imgl {
+  width: 170px;
+  height: 260px;
+}
+.ad{
+    color: black;
+    text-align: center;
+    font-size: 20px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-color: white;
+}
+.imgq {
+  width: 200px;
+  height: 300px;
+}
+.imgw {
+  width: 340px;
+  height: 175px;
+}
+.imge {
+  width: 340px;
+  height: 175px;
+}
+.lg{
+    color: black;
+    text-align: center;
+    font-size: 20px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-color: white;
+}
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 40px;
+    background-image: url('clothes.avif');
+    background-size: cover;
+    background-position: center;
+    background-repeat: repeat-y;
+}
+
+.title {
+    font-family: "Chicle", cursive;
+    font-size: 40px;
+    display: inline-block;
+    padding: 15px 40px;
+    color: black;
+    background-color: white;
+    border: 3px solid black;
+    border-radius: 50px;
+    margin: 20px 0;
+}
+
+.grid {
+    display: flex;
+    flex-wrap: wrap;      /* allows items to wrap on smaller screens */
+    gap: 20px;
+    justify-content: center; /* centers the grid horizontally */
+}
+
+.product {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.product-img {
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.product-img.white-tape { width: 180px; height: 260px; }
+.product-img.colour-tape { width: 200px; height: 300px; }
+.product-img.panty { width: 340px; height: 175px; }
+
+.product span {
+    display: block;
+    margin-top: 5px;
+    font-size: 18px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: black;
+    background-color: white;
+    padding: 2px 8px;
+    border-radius: 5px;
+    text-align: center;
+}
+/* Apply black border to all images */
+.product-img {
+    border: 2px solid black;  /* black border */
+    border-radius: 10px;       /* optional: rounded corners */
+}
+.product-img.bra {
+    width: 200px;        /* you can adjust this */
+    aspect-ratio: 4 / 3; /* 🔥 keeps perfect 4:3 ratio */
+    object-fit: cover;   /* prevents stretching */
+}
+.header {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end; /* pushes to right */
+    align-items: center;
+    
+    box-sizing: border-box;
+}
+
+/* Dropdown styling */
+select {
+    margin-left: 10px;
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+}
+.home-btn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 5%;
+    width: 90%;
+    height: 55%;
+
+    background: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.85),
+        rgba(255, 255, 255, 0.2),
+        transparent
+    );
+
+    border-radius: 50px;
+    pointer-events: none;
+}
+.home-btn {
+    position: absolute;
+    top: 10px;
+    left: 20px;
+
+    text-decoration: none;
+    font-weight: bold;
+    color: #222;
+
+    padding: 10px 22px;
+    border-radius: 50px;
+
+    /* 🔥 Stronger 3D surface gradient */
+    background: linear-gradient(
+        145deg,
+        #ffffff 0%,
+        #f0f0f0 40%,
+        #dcdcdc 100%
+    );
+
+    /* 🧱 Deep embossed effect */
+    box-shadow:
+        inset 4px 4px 8px rgba(255, 255, 255, 1),   /* strong top highlight */
+        inset -8px -8px 14px rgba(0, 0, 0, 0.2),   /* deeper inner shadow */
+        4px 4px 10px rgba(0, 0, 0, 0.15),           /* outer soft shadow */
+        -3px -3px 8px rgba(255, 255, 255, 0.9);     /* outer glow */
+
+    border: 1px solid rgba(0, 0, 0, 0.08);
+
+    backdrop-filter: blur(3px);
+
+    transition: all 0.2s ease;
+    overflow: hidden;
+}
+.home-btn:active {
+    box-shadow:
+        inset 6px 6px 10px rgba(0, 0, 0, 0.2),
+        inset -3px -3px 6px rgba(255, 255, 255, 0.8);
+
+    transform: scale(0.96);
+}
+
+/* keep header as it is */
+.header {
+    position: relative;
+}

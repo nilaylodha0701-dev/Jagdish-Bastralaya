@@ -1,0 +1,251 @@
+body {
+    margin: 0;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column; /* stack vertically */
+    align-items: center;    /* center horizontally */
+    justify-content: flex-start;
+
+    padding-top: 40px;
+
+    background-image: url('clothes.avif');
+    background-size: cover;
+    background-position: center;
+    background-repeat: repeat-y;
+}
+.title {
+    font-family: "Chicle", cursive;
+    font-size: 30px;
+    
+    display: inline-block;
+    padding: 15px 40px;
+
+    color: black;
+    background-color: white;
+
+    border: 3px solid black;
+    border-radius: 50px;
+
+    margin: 10px 0; /* space between texts */
+}
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    width: 90%;
+    max-width: 800px;
+}
+
+.item {
+    text-align: center;
+}
+
+.item img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
+.img-name {
+    display: inline-block;
+    margin-top: 6px;
+    padding: 6px 12px;
+
+    background: white;
+    color: black;
+
+    font-weight: bold;
+    border-radius: 20px;
+
+    border: 2px solid black;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    .image-grid {
+        grid-template-columns: 1fr;
+        width: 80%;
+    }
+}
+.image-grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 in one row */
+    gap: 15px;
+    width: 90%;
+    max-width: 800px;
+    margin-bottom: 30px;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    .image-grid-3 {
+        grid-template-columns: 1fr; /* stack */
+        width: 80%;
+    }
+}
+.image-grid-trouser {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+
+    width: 90%;
+    max-width: 1000px;
+
+    margin: 0 auto 30px auto;
+}
+.image-grid-trouser img {
+    width: 100%;
+    aspect-ratio: 9 / 16;
+    object-fit: cover;
+
+    border: 2px solid black;
+    border-radius: 10px;
+}
+.img-name {
+    display: inline-block;
+    margin-top: 6px;
+    padding: 6px 12px;
+
+    background: white;
+    color: black;
+
+    font-weight: bold;
+    border-radius: 20px;
+
+    border: 2px solid black;
+}
+
+/* 📱 Mobile */
+@media (max-width: 600px) {
+    .image-grid-trouser {
+        grid-template-columns: 1fr; /* stacked */
+        width: 80%;
+    }
+}
+.item {
+    text-align: center;
+}
+.image-grid-formal {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 per row */
+    gap: 15px;
+
+    width: 90%;
+    max-width: 900px;
+
+    margin: 0 auto 30px;
+}
+
+.image-grid-formal img {
+    width: 100%;
+    aspect-ratio: 3 / 4;   /* your requirement */
+    object-fit: cover;
+
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
+/* 🏷️ title box */
+.img-name {
+    display: inline-block;
+    margin-top: 6px;
+    padding: 6px 12px;
+
+    background: white;
+    color: black;
+
+    font-weight: bold;
+    border-radius: 20px;
+
+    border: 2px solid black;
+}
+
+/* 📱 Mobile */
+@media (max-width: 600px) {
+    .image-grid-formal {
+        grid-template-columns: 1fr; /* stacked */
+        width: 80%;
+    }
+}
+.header {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end; /* right side */
+    align-items: center;
+    box-sizing: border-box;
+}
+
+select {
+    margin-left: 10px;
+    padding: 6px; /* small clean padding */
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+.home-btn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 5%;
+    width: 90%;
+    height: 55%;
+
+    background: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.85),
+        rgba(255, 255, 255, 0.2),
+        transparent
+    );
+
+    border-radius: 50px;
+    pointer-events: none;
+}
+.home-btn {
+    position: absolute;
+    top: 10px;
+    left: 20px;
+
+    text-decoration: none;
+    font-weight: bold;
+    color: #222;
+
+    padding: 10px 22px;
+    border-radius: 50px;
+
+    /* 🔥 Stronger 3D surface gradient */
+    background: linear-gradient(
+        145deg,
+        #ffffff 0%,
+        #f0f0f0 40%,
+        #dcdcdc 100%
+    );
+
+    /* 🧱 Deep embossed effect */
+    box-shadow:
+        inset 4px 4px 8px rgba(255, 255, 255, 1),   /* strong top highlight */
+        inset -8px -8px 14px rgba(0, 0, 0, 0.2),   /* deeper inner shadow */
+        4px 4px 10px rgba(0, 0, 0, 0.15),           /* outer soft shadow */
+        -3px -3px 8px rgba(255, 255, 255, 0.9);     /* outer glow */
+
+    border: 1px solid rgba(0, 0, 0, 0.08);
+
+    backdrop-filter: blur(3px);
+
+    transition: all 0.2s ease;
+    overflow: hidden;
+}
+.home-btn:active {
+    box-shadow:
+        inset 6px 6px 10px rgba(0, 0, 0, 0.2),
+        inset -3px -3px 6px rgba(255, 255, 255, 0.8);
+
+    transform: scale(0.96);
+}
+
+/* keep header as it is */
+.header {
+    position: relative;
+}

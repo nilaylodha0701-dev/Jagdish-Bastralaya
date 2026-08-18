@@ -1,0 +1,662 @@
+/* =========================================================
+   GENERAL PAGE
+========================================================= */
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+
+    background: #f5f5f5;
+    background-image: url('clothes.avif');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+
+/* =========================================================
+   LOGO
+========================================================= */
+
+.logo {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+
+    font-size: 40px;
+    font-weight: bold;
+
+    color: #222;
+}
+
+
+/* =========================================================
+   TOP RIGHT TEXT
+========================================================= */
+
+.since {
+    position: absolute;
+
+    top: 20px;
+    right: 20px;
+
+    text-align: right;
+
+    font-size: 18px;
+
+    animation: riseTop 1.5s ease;
+}
+
+.since span {
+    font-size: 14px;
+    color: gray;
+}
+
+
+/* =========================================================
+   TOP IMAGE
+========================================================= */
+
+.top-image {
+    display: block;
+
+    margin: 10px auto 0 auto;
+
+    width: 300px;
+    height: 300px;
+
+    border-radius: 50%;
+
+    object-fit: cover;
+
+    animation: riseTop 1.5s ease;
+}
+
+
+/* =========================================================
+   MAIN CONTAINER
+========================================================= */
+
+.container {
+    text-align: center;
+
+    margin-top: 0;
+
+    padding: 0 20px;
+}
+
+
+/* =========================================================
+   TITLE
+========================================================= */
+
+.title {
+    font-family: "Pirata One", system-ui;
+
+    font-weight: 400;
+    font-style: normal;
+
+    font-size: 60px;
+
+    background: linear-gradient(
+        90deg,
+        rgb(255, 47, 0),
+        white,
+        rgb(255, 115, 0)
+    );
+
+    display: inline-block;
+
+    width: 450px;
+
+    text-decoration: underline;
+
+    padding: 10px 20px;
+
+    border-radius: 20px;
+
+    animation: riseBottom 1.5s ease;
+
+    position: relative;
+
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   SUBTITLE
+========================================================= */
+
+.subtitle {
+    font-family: "Pirata One", system-ui;
+
+    font-size: 30px;
+
+    margin-top: -20px;
+
+    margin-bottom: 10px;
+
+    animation: riseBottom 1.5s ease;
+
+    position: relative;
+
+    text-decoration: underline;
+
+    color: white;
+}
+
+
+/* =========================================================
+   CATALOGUE BUTTON
+========================================================= */
+
+.catalogue-btn {
+    font-family: "Kaushan Script", cursive;
+
+    display: inline-block;
+
+    margin-top: -10px;
+
+    padding: 15px 40px;
+
+    background: black;
+
+    color: white;
+
+    text-decoration: none;
+
+    border-radius: 5px;
+
+    transition:
+        transform 0.35s ease,
+        border-radius 0.35s ease,
+        background 0.3s ease;
+
+    animation: riseBottom 1.5s ease;
+
+    position: relative;
+}
+
+
+/* Catalogue hover */
+
+.catalogue-btn:hover {
+    transform: scale(1.05);
+    background: #111;
+}
+
+
+/* Catalogue click */
+
+.catalogue-btn:active {
+    border-radius: 50%;
+    transform: scale(0.9);
+}
+
+
+/* =========================================================
+   CATALOGUE CONTAINER
+========================================================= */
+
+.catalogue-container {
+    width: 100%;
+
+    max-width: 1200px;
+
+    margin: 100px auto 0 auto;
+
+    padding: 0 25px;
+
+    box-sizing: border-box;
+
+    display: grid;
+
+    /* LAPTOP = 4 IN ONE ROW */
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 40px;
+
+    justify-items: center;
+}
+
+
+/* =========================================================
+   CATEGORY CARD
+========================================================= */
+
+.category-card {
+    width: 100%;
+
+    max-width: 230px;
+
+    text-decoration: none;
+
+    color: white;
+
+    text-align: center;
+
+    cursor: pointer;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    transition:
+        transform 0.35s ease,
+        opacity 0.35s ease;
+
+    animation: riseBottom 1.5s ease;
+}
+
+
+/* =========================================================
+   CATEGORY IMAGE BOX
+========================================================= */
+
+.category-image-box {
+    width: 210px;
+    height: 210px;
+
+    background: white;
+
+    border-radius: 18px;
+
+    overflow: hidden;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.35);
+
+    transition:
+        transform 0.35s ease,
+        border-radius 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+
+/* =========================================================
+   CATEGORY IMAGE
+========================================================= */
+
+.category-image {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+
+    transition:
+        transform 0.35s ease;
+}
+
+
+/* =========================================================
+   CATEGORY NAME
+========================================================= */
+
+.category-name {
+    margin-top: 12px;
+
+    padding: 8px 20px;
+
+    min-width: 130px;
+
+    box-sizing: border-box;
+
+    background: black;
+
+    color: white;
+
+    border-radius: 10px;
+
+    font-family: "Pirata One", system-ui;
+
+    font-size: 25px;
+
+    font-weight: 400;
+
+    text-align: center;
+
+    box-shadow:
+        0 4px 10px rgba(0, 0, 0, 0.3);
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease;
+}
+
+
+/* =========================================================
+   HOVER EFFECT
+========================================================= */
+
+.category-card:hover {
+    transform: translateY(-8px);
+}
+
+.category-card:hover .category-image-box {
+    box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+.category-card:hover .category-image {
+    transform: scale(1.05);
+}
+
+.category-card:hover .category-name {
+    background: #222;
+    transform: scale(1.05);
+}
+
+
+/* =========================================================
+   CLICK EFFECT
+========================================================= */
+
+.category-card.clicked {
+    transform: scale(0.85);
+    opacity: 0.8;
+}
+
+.category-card.clicked .category-image-box {
+    border-radius: 50%;
+    transform: scale(0.85);
+}
+
+.category-card.clicked .category-image {
+    transform: scale(1.1);
+}
+
+.category-card.clicked .category-name {
+    transform: scale(0.9);
+    border-radius: 50%;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.footer {
+    width: 100%;
+
+    text-align: center;
+
+    color: white;
+
+    margin-top: 70px;
+
+    padding: 15px 10px;
+
+    box-sizing: border-box;
+
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   ANIMATIONS
+========================================================= */
+
+@keyframes riseBottom {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+
+@keyframes riseTop {
+    from {
+        transform: translateY(-100px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+
+@keyframes slideLeft {
+    from {
+        transform: translateX(-100px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+
+/* =========================================================
+   TABLET
+   2 × 2
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .catalogue-container {
+        grid-template-columns: repeat(2, 1fr);
+
+        gap: 40px 25px;
+
+        margin-top: 70px;
+
+        padding: 0 20px;
+    }
+
+    .category-card {
+        max-width: 220px;
+    }
+
+    .category-image-box {
+        width: 190px;
+        height: 190px;
+    }
+
+    .category-name {
+        font-size: 23px;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+   2 COLUMNS UNTIL 480px
+========================================================= */
+
+@media (max-width: 768px) {
+
+    .logo {
+        font-size: 30px;
+    }
+
+    .since {
+        font-size: 14px;
+    }
+
+    .since span {
+        font-size: 12px;
+    }
+
+    .top-image {
+        width: 220px;
+        height: 220px;
+    }
+
+    .title {
+        width: auto;
+
+        max-width: 90%;
+
+        font-size: 28px;
+
+        padding: 12px 20px;
+    }
+
+    .subtitle {
+        font-size: 16px;
+
+        margin-top: -5px;
+    }
+
+    .catalogue-btn {
+        padding: 12px 25px;
+
+        font-size: 14px;
+
+        margin-top: 5px;
+    }
+
+    .catalogue-container {
+        grid-template-columns: repeat(2, 1fr);
+
+        gap: 30px 15px;
+
+        margin-top: 60px;
+
+        padding: 0 15px;
+    }
+
+    .category-card {
+        max-width: 170px;
+    }
+
+    .category-image-box {
+        width: 150px;
+        height: 150px;
+
+        border-radius: 14px;
+    }
+
+    .category-name {
+        min-width: 110px;
+
+        margin-top: 10px;
+
+        padding: 7px 15px;
+
+        font-size: 21px;
+
+        border-radius: 8px;
+    }
+
+    .footer {
+        margin-top: 50px;
+    }
+}
+
+
+/* =========================================================
+   PHONE ONLY
+   ONE CATEGORY PER ROW
+========================================================= */
+
+@media (max-width: 480px) {
+
+    .logo {
+        font-size: 24px;
+
+        top: 10px;
+        left: 10px;
+    }
+
+    .since {
+        top: 10px;
+        right: 10px;
+
+        font-size: 12px;
+    }
+
+    .since span {
+        font-size: 10px;
+    }
+
+    .top-image {
+        width: 180px;
+        height: 180px;
+    }
+
+    .title {
+        font-size: 24px;
+
+        padding: 10px 15px;
+
+        border-radius: 12px;
+    }
+
+    .subtitle {
+        font-size: 14px;
+    }
+
+    .catalogue-btn {
+        font-size: 14px;
+
+        padding: 10px 20px;
+    }
+
+
+    /* =============================================
+       ONE COLUMN ON PHONE
+    ============================================= */
+
+    .catalogue-container {
+        grid-template-columns: 1fr;
+
+        gap: 30px;
+
+        margin-top: 45px;
+
+        padding: 0 15px;
+    }
+
+    .category-card {
+        max-width: 200px;
+
+        width: 100%;
+    }
+
+    .category-image-box {
+        width: 160px;
+        height: 160px;
+
+        border-radius: 15px;
+    }
+
+    .category-name {
+        font-size: 20px;
+
+        min-width: 110px;
+
+        padding: 7px 15px;
+
+        border-radius: 8px;
+    }
+
+    .footer {
+        font-size: 12px;
+
+        margin-top: 40px;
+    }
+}

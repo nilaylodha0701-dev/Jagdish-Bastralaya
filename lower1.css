@@ -1,0 +1,546 @@
+body {
+    margin: 0;
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+
+    padding-top: 40px;
+
+    font-family: 'Chicle', cursive;
+
+    /* Background - natural size, no zoom */
+    background-image: url('clothes.avif');
+    background-size: auto;
+    background-position: center top;
+    background-repeat: repeat;
+
+    overflow-x: hidden;
+}
+
+
+/* =========================================
+   HEADER
+   ========================================= */
+
+.header {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    box-sizing: border-box;
+    position: relative;
+}
+
+select {
+    margin-left: 10px;
+    padding: 6px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+
+/* =========================================
+   HOME BUTTON
+   ========================================= */
+
+.home-btn::before {
+    content: "";
+    position: absolute;
+
+    top: 0;
+    left: 5%;
+
+    width: 90%;
+    height: 55%;
+
+    background: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.85),
+        rgba(255, 255, 255, 0.2),
+        transparent
+    );
+
+    border-radius: 50px;
+    pointer-events: none;
+}
+
+.home-btn {
+    position: absolute;
+
+    top: 10px;
+    left: 20px;
+
+    text-decoration: none;
+    font-weight: bold;
+    color: #222;
+
+    padding: 10px 22px;
+    border-radius: 50px;
+
+    background: linear-gradient(
+        145deg,
+        #ffffff 0%,
+        #f0f0f0 40%,
+        #dcdcdc 100%
+    );
+
+    box-shadow:
+        inset 4px 4px 8px rgba(255, 255, 255, 1),
+        inset -8px -8px 14px rgba(0, 0, 0, 0.2),
+        4px 4px 10px rgba(0, 0, 0, 0.15),
+        -3px -3px 8px rgba(255, 255, 255, 0.9);
+
+    border: 1px solid rgba(0, 0, 0, 0.08);
+
+    backdrop-filter: blur(3px);
+
+    transition: all 0.2s ease;
+    overflow: hidden;
+}
+
+.home-btn:active {
+    box-shadow:
+        inset 6px 6px 10px rgba(0, 0, 0, 0.2),
+        inset -3px -3px 6px rgba(255, 255, 255, 0.8);
+
+    transform: scale(0.96);
+}
+
+
+/* =========================================
+   GENERAL GRID
+   ========================================= */
+
+.grid {
+    display: grid;
+
+    gap: 15px;
+
+    width: 100%;
+    max-width: 1000px;
+
+    margin-left: auto;
+    margin-right: auto;
+
+    box-sizing: border-box;
+
+    justify-items: center;
+}
+
+
+/* =========================================
+   GENERAL IMAGE STYLE
+   ========================================= */
+
+.grid img {
+    width: 100%;
+
+    object-fit: contain;
+
+    border-radius: 10px;
+
+    background: #ddd;
+
+    border: 2px solid black;
+
+    display: block;
+
+    margin-left: auto;
+    margin-right: auto;
+
+    box-sizing: border-box;
+}
+
+
+/* =========================================
+   PC LAYOUT
+   ========================================= */
+
+/* Half Pant & Trouser - 3 columns */
+
+/* 3/4th - 4 columns */
+
+.grid-4x1 {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+
+/* 4 × 2 Grid */
+
+.grid-4x2 {
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 15px;
+
+    justify-items: center;
+}
+
+
+/* =========================================
+   SECTION
+   ========================================= */
+
+.section {
+    width: 100%;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.section h2 {
+    text-align: center;
+
+    display: inline-block;
+
+    background: white;
+
+    border: 2px solid black;
+
+    padding: 8px 20px;
+
+    border-radius: 50px;
+
+    margin: 20px auto;
+
+    box-sizing: border-box;
+}
+
+
+/* =========================================
+   JEANS
+   ========================================= */
+
+.jeans-grid {
+    justify-items: center;
+}
+
+.jeans-grid .card {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+
+    align-items: center;
+
+    width: 100%;
+}
+
+
+.jeans-grid img {
+    width: 100%;
+
+    height: 400px;
+
+    object-fit: contain;
+
+    border-radius: 10px;
+
+    border: 2px solid black;
+
+    display: block;
+}
+
+
+.jeans-grid span {
+    width: 100%;
+
+    background: white;
+
+    padding: 6px 0;
+
+    text-align: center;
+
+    border: 2px solid black;
+
+    border-radius: 10px;
+
+    display: inline-block;
+
+    box-sizing: border-box;
+}
+
+
+/* =========================================
+   MOBILE PORTRAIT
+   ========================================= */
+
+@media screen and (max-width: 768px) {
+
+    /*
+       Background remains natural size.
+       It will NOT be zoomed.
+    */
+
+    body {
+        background-size: auto;
+        background-position: center top;
+        background-repeat: repeat;
+
+        padding-top: 40px;
+    }
+
+
+    /* All grids become one column */
+
+    .grid-3x2,
+    .grid-4x1,
+    .grid-4x2 {
+
+        grid-template-columns: 1fr;
+
+        width: calc(100% - 30px);
+
+        max-width: 500px;
+
+        margin-left: auto;
+        margin-right: auto;
+
+        gap: 35px;
+
+        justify-items: center;
+    }
+
+
+    /* Normal product images */
+
+    .grid img {
+
+        width: 100%;
+
+        max-width: 320px;
+
+        height: auto;
+
+        object-fit: contain;
+
+        transform: none;
+
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+
+    /* =========================================
+       JEANS - PORTRAIT
+       ========================================= */
+
+    .jeans-grid {
+
+        width: calc(100% - 30px);
+
+        max-width: 350px;
+
+        margin-left: auto;
+        margin-right: auto;
+
+        padding: 0;
+
+        justify-items: center;
+
+        box-sizing: border-box;
+    }
+
+
+    .jeans-grid .card {
+
+        width: 100%;
+
+        max-width: 320px;
+
+        margin-left: auto;
+        margin-right: auto;
+
+        align-items: center;
+
+        gap: 10px;
+    }
+
+
+    .jeans-grid img {
+
+        width: 100%;
+
+        max-width: 320px;
+
+        height: auto;
+
+        object-fit: contain;
+
+        transform: none;
+
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+
+    .jeans-grid span {
+
+        width: 100%;
+
+        max-width: 320px;
+
+        box-sizing: border-box;
+    }
+
+
+    .section h2 {
+
+        max-width: calc(100% - 30px);
+
+        box-sizing: border-box;
+    }
+}
+
+
+/* =========================================
+   MOBILE LANDSCAPE
+   ========================================= */
+
+@media screen and (orientation: landscape) and (max-height: 600px) {
+
+    html,
+    body {
+        width: 100%;
+
+        min-width: 0;
+
+        overflow-x: hidden;
+    }
+
+
+    body {
+
+        padding-top: 25px;
+
+        /*
+           Natural background size.
+           NO COVER.
+           NO ZOOM.
+        */
+
+        background-size: auto;
+
+        background-position: center top;
+
+        background-repeat: repeat;
+    }
+
+
+    /* =========================================
+       GENERAL GRIDS
+       ========================================= */
+
+    .grid-3x2,
+    .grid-4x1,
+    .grid-4x2 {
+
+        width: calc(100% - 30px);
+
+        max-width: 100%;
+
+        margin-left: auto;
+        margin-right: auto;
+
+        justify-items: center;
+
+        box-sizing: border-box;
+    }
+
+
+    .grid img {
+
+        width: 100%;
+
+        max-width: 100%;
+
+        height: auto;
+
+        object-fit: contain;
+
+        transform: none;
+
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+
+    /* =========================================
+       JEANS - LANDSCAPE
+       ========================================= */
+
+    .jeans-grid {
+
+        width: calc(100% - 40px);
+
+        max-width: 100%;
+
+        margin-left: auto;
+        margin-right: auto;
+
+        padding-left: 10px;
+        padding-right: 10px;
+
+        box-sizing: border-box;
+
+        justify-items: center;
+    }
+
+
+    .jeans-grid .card {
+
+        width: 100%;
+
+        max-width: 280px;
+
+        margin-left: auto;
+        margin-right: auto;
+
+        align-items: center;
+
+        gap: 10px;
+    }
+
+
+    .jeans-grid img {
+
+        width: 100%;
+
+        max-width: 280px;
+
+        height: auto;
+
+        object-fit: contain;
+
+        transform: none;
+
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+
+    .jeans-grid span {
+
+        width: 100%;
+
+        max-width: 280px;
+
+        box-sizing: border-box;
+    }
+
+
+    /* =========================================
+       TITLE / SECTION
+       ========================================= */
+
+    .section h2 {
+
+        max-width: calc(100% - 30px);
+
+        box-sizing: border-box;
+    }
+}

@@ -1,0 +1,186 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f5f5f5;
+    overflow-x: hidden;
+    background-image: url('clothes.avif');
+    background-size: cover;      
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+.ui {
+    font-family: 'Chicle', cursive;
+    display: inline-block;          /* shrink to fit text */
+    font-size: 28px;
+
+    padding: 4px 12px;             /* tight padding */
+    background: white;
+    border: 3px solid black;
+    border-radius: 50px;
+
+    margin: 15px 0;
+    text-align: center;
+
+    /* center the box */
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+/* Pill-shaped title box */
+
+.product-unit {
+    display: flex;
+    flex-direction: column;    /* title on top, image below */
+    align-items: center;       /* center horizontally */
+    gap: 10px;                 /* spacing between pill and image */
+}
+
+/* Pill-shaped title */
+.product-box h2 {
+    padding: 6px 20px;
+    background: white;
+    border: 3px solid black;
+    border-radius: 50px;
+    margin: 0;
+    font-size: 22px;
+    text-align: center;
+}
+
+/* Image below pill */
+.product-image {
+    width: 180px;              /* consistent width */
+    height: auto;
+    border: 2px solid black;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+/* Mobile adjustments */
+@media (max-width: 767px) {
+    .product-image {
+        width: 150px;
+    }
+}
+.products-container {
+display: flex;
+justify-content: center;
+gap: 40px;
+flex-wrap: wrap;
+}
+
+.product-unit {
+display: flex;
+flex-direction: column;
+align-items: center;
+gap: 12px;
+}
+
+.product-unit h2 {
+padding: 6px 20px;
+background: white;
+border: 3px solid black;
+border-radius: 50px;
+margin: 0;
+font-size: 22px;
+text-align: center;
+}
+
+/* Side-by-side images for perfume */
+.image-row {
+display: flex;
+gap: 10px;
+}
+.image-row {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap; /* allows wrapping if needed */
+}
+.product-image {
+    width: 100%;          /* take full width of container */
+    max-width: 180px;     /* limit size */
+    height: auto;
+    border: 2px solid black;
+    border-radius: 10px;
+    object-fit: contain;  /* IMPORTANT: prevents cropping */
+}
+.footer {
+  text-align: center;
+}
+.header {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    
+}
+
+select {
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+.home-btn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 5%;
+    width: 90%;
+    height: 55%;
+
+    background: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.85),
+        rgba(255, 255, 255, 0.2),
+        transparent
+    );
+
+    border-radius: 50px;
+    pointer-events: none;
+}
+.home-btn {
+    position: absolute;
+    top: 10px;
+    left: 20px;
+
+    text-decoration: none;
+    font-weight: bold;
+    color: #222;
+
+    padding: 10px 22px;
+    border-radius: 50px;
+
+    /* 🔥 Stronger 3D surface gradient */
+    background: linear-gradient(
+        145deg,
+        #ffffff 0%,
+        #f0f0f0 40%,
+        #dcdcdc 100%
+    );
+
+    /* 🧱 Deep embossed effect */
+    box-shadow:
+        inset 4px 4px 8px rgba(255, 255, 255, 1),   /* strong top highlight */
+        inset -8px -8px 14px rgba(0, 0, 0, 0.2),   /* deeper inner shadow */
+        4px 4px 10px rgba(0, 0, 0, 0.15),           /* outer soft shadow */
+        -3px -3px 8px rgba(255, 255, 255, 0.9);     /* outer glow */
+
+    border: 1px solid rgba(0, 0, 0, 0.08);
+
+    backdrop-filter: blur(3px);
+
+    transition: all 0.2s ease;
+    overflow: hidden;
+}
+.home-btn:active {
+    box-shadow:
+        inset 6px 6px 10px rgba(0, 0, 0, 0.2),
+        inset -3px -3px 6px rgba(255, 255, 255, 0.8);
+
+    transform: scale(0.96);
+}
+
+/* keep header as it is */
+.header {
+    position: relative;
+}

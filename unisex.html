@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unisex Items</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chicle&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="unisex.css">
+    </head>
+    <body>
+        <!-- 🔥 HEADER -->
+<div class="header">
+    <a href="index.html" class="home-btn">Home</a>
+    <select id="genderFilter"></select>
+</div>
+
+<script>
+
+// ================= GENDER =================
+const genders = [
+    { name: "Gents", file: "gents" },
+    { name: "Ladies", file: "ladies" },
+    { name: "Kids", file: "kids" },
+    { name: "Unisex", file: "unisex" }
+];
+
+// ✅ CURRENT PAGE (CHANGE PER PAGE)
+const currentGender = "ladies";
+
+// ================= GENDER DROPDOWN =================
+const genderDropdown = document.getElementById("genderFilter");
+
+const savedGender = localStorage.getItem("selectedGender");
+
+// 👉 Find selected gender
+const selectedGenderObj = genders.find(g =>
+    g.file === savedGender || g.file === currentGender
+);
+
+// 👉 Show selected
+if (selectedGenderObj) {
+    const option = document.createElement("option");
+    option.textContent = selectedGenderObj.name;
+    option.selected = true;
+    genderDropdown.appendChild(option);
+}
+
+// 👉 Add remaining genders
+genders.forEach(g => {
+    if (g.file !== selectedGenderObj.file) {
+        const option = document.createElement("option");
+        option.value = g.file + ".html";
+        option.textContent = g.name;
+        genderDropdown.appendChild(option);
+    }
+});
+
+// 👉 Save + redirect
+genderDropdown.addEventListener("change", function () {
+    const file = this.value.replace(".html", "");
+    localStorage.setItem("selectedGender", file);
+    window.location.href = this.value;
+});
+</script>
+        <h1 class="ui">UNISEX ITEMS</h1>
+        <div class="products-container">
+        <div class="product-unit">
+            <h2>CYCLING SHORTS</h2>
+        <img src="s1.jpeg" alt="Cycling Shorts" class="product-image">
+        </div>
+        <div class="product-unit">
+            <h2>PERFUME</h2>
+            <div class="image-row">
+                <img src="p1.jpeg" alt="perfume" class="product-image">
+        <img src="p2.jpeg" alt="perfume" class="product-image">
+            </div>
+        </div>
+    </div>
+    </body>
+</html>
+<footer class="footer">
+  <p>&copy; <span id="year"></span> Jagdish Bastralaya. All rights reserved.</p>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+</footer>

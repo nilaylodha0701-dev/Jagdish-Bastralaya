@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kids</title>
+    <link rel="stylesheet" href="kids.css">
+</head>
+<body>
+    <a href="index.html" class="home-btn">Home</a>
+    <div class="catalogue-container">
+
+    <a href="inner2.html" class="box" onclick="handleClick(event)">Undergarment</a>
+    <a href="upper2.html" class="box" onclick="handleClick(event)">Upper</a>
+    <a href="lower2.html" class="box" onclick="handleClick(event)">Lower</a>
+    <a href="suit.html" class="box" onclick="handleClick(event)">Suit</a>
+    <a href="thermals2.html" class="box" onclick="handleClick(event)">Thermals</a>
+</div>
+
+<script>
+        function handleClick(e) {
+            e.preventDefault(); // stop instant page load
+            const box = e.currentTarget;
+            box.classList.add("clicked");
+
+            setTimeout(() => {
+                window.location.href = box.href;
+            }, 350); // match your CSS transition duration
+        }
+    </script>
+
+</body>
+</html>
+<footer class="footer">
+  <p>&copy; <span id="year"></span> Jagdish Bastralaya. All rights reserved.</p>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+</footer>

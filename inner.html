@@ -1,157 +1,891 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Undergarment</title>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Chicle&display=swap" rel="stylesheet">
+
+<link rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Chicle&display=swap"
+      rel="stylesheet">
+
 <link rel="stylesheet" href="inner.css">
+
 </head>
+
+
 <body>
-<!-- 🔥 HEADER -->
+
+
+<!-- =====================================================
+     HEADER
+     ===================================================== -->
+
 <div class="header">
-    <a href="index.html" class="home-btn">Home</a>
+
+    <a href="index.html" class="home-btn">
+        Home
+    </a>
+
     <select id="categoryFilter"></select>
+
     <select id="genderFilter"></select>
+
 </div>
 
+
+
+<!-- =====================================================
+     CATEGORY / GENDER
+     ===================================================== -->
+
 <script>
-// ================= CATEGORY =================
+
 const categories = [
+
     { name: "Undergarments", file: "inner" },
+
     { name: "Upper", file: "upper" },
+
     { name: "Lower", file: "lower" },
+
     { name: "Thermals", file: "thermals" }
+
 ];
 
-// ================= GENDER =================
+
 const genders = [
+
     { name: "Gents", file: "gents" },
+
     { name: "Ladies", file: "ladies" },
+
     { name: "Kids", file: "kids" },
+
     { name: "Unisex", file: "unisex" }
+
 ];
 
-// ✅ CURRENT PAGE (CHANGE PER PAGE)
+
 const currentCategory = "inner";
+
 const currentGender = "gents";
 
-// ================= CATEGORY DROPDOWN =================
-const categoryDropdown = document.getElementById("categoryFilter");
 
-const savedCategory = localStorage.getItem("selectedCategory");
 
-// 👉 Find selected category
+/* =====================================================
+   CATEGORY DROPDOWN
+   ===================================================== */
+
+const categoryDropdown =
+    document.getElementById("categoryFilter");
+
+
+const savedCategory =
+    localStorage.getItem("selectedCategory");
+
+
 const selectedCat = categories.find(cat =>
-    cat.file === savedCategory || cat.file === currentCategory
+
+    cat.file === savedCategory ||
+    cat.file === currentCategory
+
 );
 
-// 👉 Show selected on top
+
 if (selectedCat) {
-    const option = document.createElement("option");
-    option.textContent = selectedCat.name;
+
+    const option =
+        document.createElement("option");
+
+    option.textContent =
+        selectedCat.name;
+
     option.selected = true;
+
     categoryDropdown.appendChild(option);
+
 }
 
-// 👉 Add remaining categories
+
 categories.forEach(cat => {
-    if (cat.file !== selectedCat.file) {
-        const option = document.createElement("option");
-        option.value = cat.file + ".html";
-        option.textContent = cat.name;
+
+    if (!selectedCat ||
+        cat.file !== selectedCat.file) {
+
+        const option =
+            document.createElement("option");
+
+        option.value =
+            cat.file + ".html";
+
+        option.textContent =
+            cat.name;
+
         categoryDropdown.appendChild(option);
+
     }
-});
 
-// 👉 Save + redirect
-categoryDropdown.addEventListener("change", function () {
-    const file = this.value.replace(".html", "");
-    localStorage.setItem("selectedCategory", file);
-    window.location.href = this.value;
 });
 
 
-// ================= GENDER DROPDOWN =================
-const genderDropdown = document.getElementById("genderFilter");
+categoryDropdown.addEventListener(
+    "change",
+    function () {
 
-const savedGender = localStorage.getItem("selectedGender");
+        const file =
+            this.value.replace(".html", "");
 
-// 👉 Find selected gender
-const selectedGenderObj = genders.find(g =>
-    g.file === savedGender || g.file === currentGender
+        localStorage.setItem(
+            "selectedCategory",
+            file
+        );
+
+        window.location.href =
+            this.value;
+
+    }
 );
 
-// 👉 Show selected
+
+
+/* =====================================================
+   GENDER DROPDOWN
+   ===================================================== */
+
+const genderDropdown =
+    document.getElementById("genderFilter");
+
+
+const savedGender =
+    localStorage.getItem("selectedGender");
+
+
+const selectedGenderObj =
+    genders.find(g =>
+
+        g.file === savedGender ||
+        g.file === currentGender
+
+    );
+
+
 if (selectedGenderObj) {
-    const option = document.createElement("option");
-    option.textContent = selectedGenderObj.name;
+
+    const option =
+        document.createElement("option");
+
+    option.textContent =
+        selectedGenderObj.name;
+
     option.selected = true;
+
     genderDropdown.appendChild(option);
+
 }
 
-// 👉 Add remaining genders
+
 genders.forEach(g => {
-    if (g.file !== selectedGenderObj.file) {
-        const option = document.createElement("option");
-        option.value = g.file + ".html";
-        option.textContent = g.name;
+
+    if (!selectedGenderObj ||
+        g.file !== selectedGenderObj.file) {
+
+        const option =
+            document.createElement("option");
+
+        option.value =
+            g.file + ".html";
+
+        option.textContent =
+            g.name;
+
         genderDropdown.appendChild(option);
+
     }
+
 });
 
-// 👉 Save + redirect
-genderDropdown.addEventListener("change", function () {
-    const file = this.value.replace(".html", "");
-    localStorage.setItem("selectedGender", file);
-    window.location.href = this.value;
-});
+
+genderDropdown.addEventListener(
+    "change",
+    function () {
+
+        const file =
+            this.value.replace(".html", "");
+
+        localStorage.setItem(
+            "selectedGender",
+            file
+        );
+
+        window.location.href =
+            this.value;
+
+    }
+);
+
 </script>
-<h2>WHITE VEST</h2>
-<div class="row">
-    <img src="Screenshot 2026-04-06 213251.png">
-    <img src="Screenshot 2026-04-06 213806.png">
-    <img src="4.jpeg">
-</div>
-<h2>COLOUR VEST</h2>
-<div class="row">
-    <img src="Screenshot 2026-04-06 213333.png">
 
-    <!-- Image with centered label -->
-    <div class="img-label">
-        <img src="9.jpeg">
-        <span>BLACK, GREY & WHITE</span>
-    </div>
+
+
+<!-- =====================================================
+     PRODUCTS
+     ===================================================== -->
+
+
+<h2>WHITE VEST</h2>
+
+<div class="row">
+
+    <img src="Screenshot 2026-04-06 213251.png"
+         alt="White Vest">
+
+    <img src="Screenshot 2026-04-06 213806.png"
+         alt="White Vest">
+         <span>
+
+         </span>
+    <img src="4.jpeg"
+         alt="White Vest">
+
 </div>
+
+
+
+<h2>COLOUR VEST</h2>
+
+<div class="row">
+
+    <img src="Screenshot 2026-04-06 213333.png"
+         alt="Colour Vest">
+
+
+    <!-- Image with its own label -->
+
+    <div class="img-label">
+
+        <img src="9.jpeg"
+             alt="Colour Vest">
+
+        <span>
+            BLACK, GREY & WHITE
+        </span>
+
+    </div>
+
+</div>
+
+
 
 <h2>HALF BRIEF</h2>
+
 <div class="row">
-    <img src="3.jpeg">
-    <img src="q1.jpeg">
+
+    <img src="3.jpeg"
+         alt="Half Brief">
+
+    <img src="q1.jpeg"
+         alt="Half Brief">
+
 </div>
+
+
 
 <h2>MEDIUM BRIEF</h2>
+
 <div class="row">
-    <img src="1.jpeg">
-    <img src="2.jpeg">
-    <img src="5.jpeg">
-    <img src="q3.jpeg">
+
+    <img src="1.jpeg"
+         alt="Medium Brief">
+
+    <img src="2.jpeg"
+         alt="Medium Brief">
+
+    <img src="5.jpeg"
+         alt="Medium Brief">
+
+    <img src="q3.jpeg"
+         alt="Medium Brief">
+
 </div>
+
+
 
 <h2>FULL BRIEF</h2>
+
 <div class="row">
-    <img src="q2.jpeg">
-    <img src="10.jpeg">
+
+    <img src="q2.jpeg"
+         alt="Full Brief">
+
+    <img src="10.jpeg"
+         alt="Full Brief">
+
 </div>
 
-</body>
-</html>
+
+
+<!-- =====================================================
+     PRODUCT ENQUIRY POPUP
+     ===================================================== -->
+
+<div id="productModal"
+     class="product-modal">
+
+
+    <div class="product-modal-box">
+
+
+        <!-- SELECTED PRODUCT IMAGE -->
+
+        <img id="modalProductImage"
+             class="product-modal-image"
+             src=""
+             alt="Selected Product">
+
+
+        <!-- QUESTION -->
+
+        <div id="productQuestion"
+             class="product-modal-question">
+
+            Do you want to talk about this product?<br>
+
+            क्या आप इस उत्पाद के बारे में बात करना चाहते हैं?
+
+        </div>
+
+
+        <!-- YES / NO -->
+
+        <div id="questionButtons"
+             class="modal-buttons">
+
+
+            <button
+                class="modal-btn yes-btn"
+                onclick="showContactOptions()">
+
+                Yes (हाँ)
+
+            </button>
+
+
+            <button
+                class="modal-btn no-btn"
+                onclick="closeProductModal()">
+
+                No (नहीं)
+
+            </button>
+
+        </div>
+
+
+
+        <!-- CONTACT OPTIONS -->
+
+        <div id="contactOptions"
+             style="display:none;">
+
+
+            <div class="contact-question">
+
+                Choose how you want to contact us<br>
+
+                संपर्क करने का माध्यम चुनें
+
+            </div>
+
+
+            <div class="contact-buttons">
+
+
+                <a id="whatsappLink"
+                   class="contact-btn whatsapp-btn"
+                   href="#"
+                   target="_blank">
+
+                    WhatsApp
+
+                </a>
+
+
+                <a id="emailLink"
+                   class="contact-btn email-btn"
+                   href="#">
+
+                    Email
+
+                </a>
+
+
+            </div>
+
+
+            <button
+                class="close-modal-btn"
+                onclick="closeProductModal()">
+
+                Close
+
+            </button>
+
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     FOOTER
+     ===================================================== -->
+
 <footer>
-  <p>&copy; <span id="year"></span> Jagdish Bastralaya. All rights reserved.</p>
+
+    <p>
+
+        &copy;
+
+        <span id="year"></span>
+
+        Jagdish Bastralaya.
+
+        All rights reserved.
+
+    </p>
+
+</footer>
+
+
+
+<!-- =====================================================
+     PRODUCT ENQUIRY JAVASCRIPT
+     ===================================================== -->
 
 <script>
-  document.getElementById("year").textContent = new Date().getFullYear();
+
+
+/* =====================================================
+   CONTACT DETAILS
+   ===================================================== */
+
+const whatsappNumber =
+    "919234748585";
+
+
+const emailAddress =
+    "jagdishbastralaya1977@gmail.com";
+
+
+
+/* =====================================================
+   SELECTED PRODUCT INFORMATION
+   ===================================================== */
+
+let selectedProductImage = "";
+
+let selectedProductName = "";
+
+
+
+/* =====================================================
+   FIND ALL PRODUCT IMAGES
+   ===================================================== */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+
+        /*
+         * IMPORTANT:
+         *
+         * Your products are inside .row
+         *
+         * Therefore we use:
+         *
+         * .row img
+         *
+         * This will also include the image
+         * inside .img-label.
+         */
+
+        const productImages =
+            document.querySelectorAll(
+                ".row img"
+            );
+
+
+        productImages.forEach(
+            function (image) {
+
+
+                /* Make image clickable */
+
+                image.style.cursor =
+                    "pointer";
+
+
+                image.addEventListener(
+                    "click",
+                    function () {
+
+                        openProductModal(
+                            this
+                        );
+
+                    }
+                );
+
+
+            }
+        );
+
+
+        /* Footer year */
+
+        document.getElementById(
+            "year"
+        ).textContent =
+            new Date().getFullYear();
+
+
+    }
+);
+
+
+
+/* =====================================================
+   OPEN PRODUCT POPUP
+   ===================================================== */
+
+function openProductModal(image) {
+
+
+    /* Save image */
+
+    selectedProductImage =
+        image.src;
+
+
+
+    /*
+     * FIND PRODUCT NAME
+     *
+     * We find the .row containing
+     * the clicked image.
+     */
+
+    const row =
+        image.closest(".row");
+
+
+    /*
+     * The h2 immediately before
+     * that row is the product name.
+     */
+
+    let heading =
+        row.previousElementSibling;
+
+
+
+    /*
+     * Make sure it is actually an H2.
+     */
+
+    if (
+        heading &&
+        heading.tagName.toLowerCase() === "h2"
+    ) {
+
+        selectedProductName =
+            heading.textContent.trim();
+
+    }
+
+    else {
+
+        /*
+         * Fallback
+         */
+
+        selectedProductName =
+            image.alt || "Product";
+
+    }
+
+
+
+    /* Show image in popup */
+
+    document.getElementById(
+        "modalProductImage"
+    ).src =
+        selectedProductImage;
+
+
+
+    /* Show question */
+
+    document.getElementById(
+        "productQuestion"
+    ).style.display =
+        "block";
+
+
+    document.getElementById(
+        "questionButtons"
+    ).style.display =
+        "flex";
+
+
+    /* Hide contact options */
+
+    document.getElementById(
+        "contactOptions"
+    ).style.display =
+        "none";
+
+
+    /* Open popup */
+
+    document.getElementById(
+        "productModal"
+    ).classList.add("active");
+
+}
+
+
+
+/* =====================================================
+   YES BUTTON
+   ===================================================== */
+
+function showContactOptions() {
+
+
+    /* Hide question */
+
+    document.getElementById(
+        "productQuestion"
+    ).style.display =
+        "none";
+
+
+    document.getElementById(
+        "questionButtons"
+    ).style.display =
+        "none";
+
+
+    /* Show contact options */
+
+    document.getElementById(
+        "contactOptions"
+    ).style.display =
+        "block";
+
+
+
+    /* =================================================
+       CREATE IMAGE URL
+       ================================================= */
+
+    const imageURL =
+        new URL(
+            selectedProductImage,
+            window.location.href
+        ).href;
+
+
+
+    /* =================================================
+       WHATSAPP MESSAGE
+       ================================================= */
+
+    const whatsappMessage =
+
+        "Hello Jagdish Bastralaya,\n\n" +
+
+        "I want to know more about this product.\n\n" +
+
+        "Product: " +
+
+        selectedProductName +
+
+        "\n\n" +
+
+        "Product image:\n" +
+
+        imageURL;
+
+
+
+    const whatsappURL =
+
+        "https://wa.me/" +
+
+        whatsappNumber +
+
+        "?text=" +
+
+        encodeURIComponent(
+            whatsappMessage
+        );
+
+
+
+    document.getElementById(
+        "whatsappLink"
+    ).href =
+        whatsappURL;
+
+
+
+    /* =================================================
+       EMAIL
+       ================================================= */
+
+    const emailSubject =
+
+        "Product Enquiry - " +
+
+        selectedProductName;
+
+
+
+    const emailBody =
+
+        "Hello Jagdish Bastralaya,\n\n" +
+
+        "I want to know more about this product.\n\n" +
+
+        "Product: " +
+
+        selectedProductName +
+
+        "\n\n" +
+
+        "Product image:\n" +
+
+        imageURL;
+
+
+
+    const emailURL =
+
+        "mailto:" +
+
+        emailAddress +
+
+        "?subject=" +
+
+        encodeURIComponent(
+            emailSubject
+        ) +
+
+        "&body=" +
+
+        encodeURIComponent(
+            emailBody
+        );
+
+
+
+    document.getElementById(
+        "emailLink"
+    ).href =
+        emailURL;
+
+}
+
+
+
+/* =====================================================
+   CLOSE POPUP
+   ===================================================== */
+
+function closeProductModal() {
+
+
+    document.getElementById(
+        "productModal"
+    ).classList.remove(
+        "active"
+    );
+
+}
+
+
+
+/* =====================================================
+   CLICK OUTSIDE POPUP
+   ===================================================== */
+
+document.addEventListener(
+    "click",
+    function (event) {
+
+
+        const modal =
+            document.getElementById(
+                "productModal"
+            );
+
+
+        if (
+            event.target === modal
+        ) {
+
+            closeProductModal();
+
+        }
+
+
+    }
+);
+
+
+
+/* =====================================================
+   ESCAPE KEY
+   ===================================================== */
+
+document.addEventListener(
+    "keydown",
+    function (event) {
+
+
+        if (
+            event.key === "Escape"
+        ) {
+
+            closeProductModal();
+
+        }
+
+
+    }
+);
+
 </script>
-</footer>
+
+
+</body>
+
+</html>

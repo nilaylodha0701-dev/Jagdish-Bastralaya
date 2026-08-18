@@ -1,150 +1,874 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
     <title>Undergarments</title>
 
-    <!-- Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Chicle&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Chicle&display=swap"
+        rel="stylesheet">
+
     <link rel="stylesheet" href="inner2.css">
+
 </head>
 
+
 <body>
-   <!-- 🔥 HEADER -->
+
+
+<!-- =====================================================
+     HEADER
+     ===================================================== -->
+
 <div class="header">
-    <a href="index.html" class="home-btn">Home</a>
+
+    <a href="index.html"
+       class="home-btn">
+        Home
+    </a>
+
     <select id="categoryFilter"></select>
+
     <select id="genderFilter"></select>
+
 </div>
+
+
+<!-- =====================================================
+     CATEGORY / GENDER
+     ===================================================== -->
 
 <script>
-// ================= CATEGORY =================
+
 const categories = [
+
     { name: "Undergarments", file: "inner2" },
+
     { name: "Upper", file: "upper2" },
+
     { name: "Lower", file: "lower2" },
+
     { name: "Suit", file: "suit" },
+
     { name: "Thermals", file: "thermals2" }
+
 ];
 
-// ================= GENDER =================
+
 const genders = [
+
     { name: "Gents", file: "gents" },
+
     { name: "Ladies", file: "ladies" },
+
     { name: "Kids", file: "kids" },
+
     { name: "Unisex", file: "unisex" }
+
 ];
 
-// ✅ CURRENT PAGE (CHANGE PER PAGE)
+
 const currentCategory = "inner2";
+
 const currentGender = "kids";
 
-// ================= CATEGORY DROPDOWN =================
-const categoryDropdown = document.getElementById("categoryFilter");
 
-const savedCategory = localStorage.getItem("selectedCategory");
+/* ================= CATEGORY ================= */
 
-// 👉 Find selected category
+const categoryDropdown =
+    document.getElementById("categoryFilter");
+
+const savedCategory =
+    localStorage.getItem("selectedCategory");
+
+
 const selectedCat = categories.find(cat =>
-    cat.file === savedCategory || cat.file === currentCategory
+
+    cat.file === savedCategory ||
+    cat.file === currentCategory
+
 );
 
-// 👉 Show selected on top
+
 if (selectedCat) {
-    const option = document.createElement("option");
-    option.textContent = selectedCat.name;
+
+    const option =
+        document.createElement("option");
+
+    option.textContent =
+        selectedCat.name;
+
     option.selected = true;
+
     categoryDropdown.appendChild(option);
+
 }
 
-// 👉 Add remaining categories
+
 categories.forEach(cat => {
-    if (cat.file !== selectedCat.file) {
-        const option = document.createElement("option");
-        option.value = cat.file + ".html";
-        option.textContent = cat.name;
+
+    if (!selectedCat ||
+        cat.file !== selectedCat.file) {
+
+        const option =
+            document.createElement("option");
+
+        option.value =
+            cat.file + ".html";
+
+        option.textContent =
+            cat.name;
+
         categoryDropdown.appendChild(option);
+
     }
-});
 
-// 👉 Save + redirect
-categoryDropdown.addEventListener("change", function () {
-    const file = this.value.replace(".html", "");
-    localStorage.setItem("selectedCategory", file);
-    window.location.href = this.value;
 });
 
 
-// ================= GENDER DROPDOWN =================
-const genderDropdown = document.getElementById("genderFilter");
+categoryDropdown.addEventListener(
+    "change",
+    function () {
 
-const savedGender = localStorage.getItem("selectedGender");
+        const file =
+            this.value.replace(".html", "");
 
-// 👉 Find selected gender
-const selectedGenderObj = genders.find(g =>
-    g.file === savedGender || g.file === currentGender
+        localStorage.setItem(
+            "selectedCategory",
+            file
+        );
+
+        window.location.href =
+            this.value;
+
+    }
 );
 
-// 👉 Show selected
+
+/* ================= GENDER ================= */
+
+const genderDropdown =
+    document.getElementById("genderFilter");
+
+const savedGender =
+    localStorage.getItem("selectedGender");
+
+
+const selectedGenderObj =
+    genders.find(g =>
+
+        g.file === savedGender ||
+        g.file === currentGender
+
+    );
+
+
 if (selectedGenderObj) {
-    const option = document.createElement("option");
-    option.textContent = selectedGenderObj.name;
+
+    const option =
+        document.createElement("option");
+
+    option.textContent =
+        selectedGenderObj.name;
+
     option.selected = true;
+
     genderDropdown.appendChild(option);
+
 }
 
-// 👉 Add remaining genders
+
 genders.forEach(g => {
-    if (g.file !== selectedGenderObj.file) {
-        const option = document.createElement("option");
-        option.value = g.file + ".html";
-        option.textContent = g.name;
+
+    if (
+        !selectedGenderObj ||
+        g.file !== selectedGenderObj.file
+    ) {
+
+        const option =
+            document.createElement("option");
+
+        option.value =
+            g.file + ".html";
+
+        option.textContent =
+            g.name;
+
         genderDropdown.appendChild(option);
+
     }
+
 });
 
-// 👉 Save + redirect
-genderDropdown.addEventListener("change", function () {
-    const file = this.value.replace(".html", "");
-    localStorage.setItem("selectedGender", file);
-    window.location.href = this.value;
-});
+
+genderDropdown.addEventListener(
+    "change",
+    function () {
+
+        const file =
+            this.value.replace(".html", "");
+
+        localStorage.setItem(
+            "selectedGender",
+            file
+        );
+
+        window.location.href =
+            this.value;
+
+    }
+);
+
 </script>
 
-    <h1 class="title">BOYS</h1>
+
+<!-- =====================================================
+     BOYS
+     ===================================================== -->
+
+<h1 class="title">
+    BOYS
+</h1>
+
 
 <div class="product-row">
-    <div class="product2">
-        <h2 class="title">WHITE VEST</h2>
-        <img src="k2.jpeg" alt="White vest">
-    </div>
+
+
+    <!-- WHITE VEST -->
 
     <div class="product2">
-        <h2 class="title">COLOUR VEST</h2>
-        <img src="k3.jpeg" alt="Colour vest">
+
+        <h2 class="title">
+            WHITE VEST
+        </h2>
+
+        <img
+            src="k2.jpeg"
+            alt="White vest"
+            data-product-name="WHITE VEST"
+        >
+
     </div>
 
+
+    <!-- COLOUR VEST -->
+
     <div class="product2">
-        <h2 class="title">FULL BRIEF</h2>
-        <img src="k1.jpeg" alt="Full brief">
+
+        <h2 class="title">
+            COLOUR VEST
+        </h2>
+
+        <img
+            src="k3.jpeg"
+            alt="Colour vest"
+            data-product-name="COLOUR VEST"
+        >
+
     </div>
+
+
+    <!-- FULL BRIEF -->
+
+    <div class="product2">
+
+        <h2 class="title">
+            FULL BRIEF
+        </h2>
+
+        <img
+            src="k1.jpeg"
+            alt="Full brief"
+            data-product-name="FULL BRIEF"
+        >
+
+    </div>
+
+
 </div>
 
-    <h1 class="title">GIRLS</h1>
-    
-    <h2 class="product">PANT</h2>
-    <div class="product-row">
-    <img src="k4.jpeg" alt="Girls pant" class="girl-pant">
+
+<!-- =====================================================
+     GIRLS
+     ===================================================== -->
+
+<h1 class="title">
+    GIRLS
+</h1>
+
+
+<h2 class="product">
+    PANT
+</h2>
+
+
+<div class="product-row">
+
+    <img
+        src="k4.jpeg"
+        alt="Girls pant"
+        class="girl-pant"
+        data-product-name="GIRLS PANT"
+    >
+
 </div>
+
+
+<!-- =====================================================
+     PRODUCT ENQUIRY POPUP
+     ===================================================== -->
+
+<div
+    id="productModal"
+    class="product-modal"
+>
+
+
+    <div class="product-modal-box">
+
+
+        <!-- PRODUCT IMAGE -->
+
+        <img
+            id="modalProductImage"
+            class="product-modal-image"
+            src=""
+            alt="Selected Product"
+        >
+
+
+        <!-- PRODUCT NAME -->
+
+        <div
+            id="modalProductName"
+            class="product-modal-name"
+        ></div>
+
+
+        <!-- QUESTION -->
+
+        <div
+            id="productQuestion"
+            class="product-modal-question"
+        >
+
+            Do you want to talk about this product?<br>
+
+            क्या आप इस उत्पाद के बारे में बात करना चाहते हैं?
+
+        </div>
+
+
+        <!-- YES / NO -->
+
+        <div
+            id="questionButtons"
+            class="modal-buttons"
+        >
+
+            <button
+                class="modal-btn yes-btn"
+                onclick="showContactOptions()"
+            >
+
+                Yes (हाँ)
+
+            </button>
+
+
+            <button
+                class="modal-btn no-btn"
+                onclick="closeProductModal()"
+            >
+
+                No (नहीं)
+
+            </button>
+
+        </div>
+
+
+        <!-- CONTACT OPTIONS -->
+
+        <div
+            id="contactOptions"
+            style="display:none;"
+        >
+
+            <div class="contact-question">
+
+                Choose how you want to contact us<br>
+
+                संपर्क करने का माध्यम चुनें
+
+            </div>
+
+
+            <div class="contact-buttons">
+
+
+                <a
+                    id="whatsappLink"
+                    class="contact-btn whatsapp-btn"
+                    href="#"
+                    target="_blank"
+                >
+
+                    WhatsApp
+
+                </a>
+
+
+                <a
+                    id="emailLink"
+                    class="contact-btn email-btn"
+                    href="#"
+                >
+
+                    Email
+
+                </a>
+
+
+            </div>
+
+
+            <button
+                class="close-modal-btn"
+                onclick="closeProductModal()"
+            >
+
+                Close
+
+            </button>
+
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     FOOTER
+     ===================================================== -->
+
+<footer>
+
+    <p>
+
+        &copy;
+
+        <span id="year"></span>
+
+        Jagdish Bastralaya.
+
+        All rights reserved.
+
+    </p>
+
+</footer>
+
+
+<!-- =====================================================
+     PRODUCT ENQUIRY JAVASCRIPT
+     ===================================================== -->
+
+<script>
+
+
+/* =====================================================
+   CONTACT DETAILS
+   ===================================================== */
+
+const whatsappNumber =
+    "919234748585";
+
+
+const emailAddress =
+    "jagdishbastralaya1977@gmail.com";
+
+
+/* =====================================================
+   SELECTED PRODUCT
+   ===================================================== */
+
+let selectedProductImage = "";
+
+let selectedProductName = "";
+
+
+/* =====================================================
+   PAGE LOAD
+   ===================================================== */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+
+        /*
+           Select BOTH types of product images.
+
+           .product2 img = boys products
+
+           .girl-pant = girls product
+        */
+
+        const productImages =
+            document.querySelectorAll(
+                ".product2 img, .girl-pant"
+            );
+
+
+        productImages.forEach(
+            function (image) {
+
+
+                image.style.cursor =
+                    "pointer";
+
+
+                image.addEventListener(
+                    "click",
+                    function () {
+
+                        openProductModal(
+                            this
+                        );
+
+                    }
+                );
+
+
+            }
+        );
+
+
+        /* Footer year */
+
+        document.getElementById(
+            "year"
+        ).textContent =
+            new Date().getFullYear();
+
+
+    }
+);
+
+
+/* =====================================================
+   OPEN PRODUCT POPUP
+   ===================================================== */
+
+function openProductModal(image) {
+
+
+    /*
+       Save image
+    */
+
+    selectedProductImage =
+        image.src;
+
+
+    /*
+       IMPORTANT:
+
+       Get the name directly from
+       the clicked image.
+
+       This prevents the Girls Pant
+       from getting "WHITE VEST".
+    */
+
+    selectedProductName =
+        image.getAttribute(
+            "data-product-name"
+        );
+
+
+    /*
+       Open modal
+    */
+
+    const modal =
+        document.getElementById(
+            "productModal"
+        );
+
+
+    /*
+       Show image
+    */
+
+    document.getElementById(
+        "modalProductImage"
+    ).src =
+        selectedProductImage;
+
+
+    /*
+       Show product name
+    */
+
+    document.getElementById(
+        "modalProductName"
+    ).textContent =
+        selectedProductName;
+
+
+    /*
+       Show question
+    */
+
+    document.getElementById(
+        "productQuestion"
+    ).style.display =
+        "block";
+
+
+    document.getElementById(
+        "questionButtons"
+    ).style.display =
+        "flex";
+
+
+    /*
+       Hide contact options
+    */
+
+    document.getElementById(
+        "contactOptions"
+    ).style.display =
+        "none";
+
+
+    /*
+       Show popup
+    */
+
+    modal.classList.add(
+        "active"
+    );
+
+}
+
+
+/* =====================================================
+   YES BUTTON
+   ===================================================== */
+
+function showContactOptions() {
+
+
+    /*
+       Hide question
+    */
+
+    document.getElementById(
+        "productQuestion"
+    ).style.display =
+        "none";
+
+
+    document.getElementById(
+        "questionButtons"
+    ).style.display =
+        "none";
+
+
+    /*
+       Show contact options
+    */
+
+    document.getElementById(
+        "contactOptions"
+    ).style.display =
+        "block";
+
+
+    /*
+       Create image URL
+    */
+
+    const imageURL =
+        new URL(
+            selectedProductImage,
+            window.location.href
+        ).href;
+
+
+    /* =================================================
+       WHATSAPP MESSAGE
+       ================================================= */
+
+
+    const whatsappMessage =
+
+        "Hello Jagdish Bastralaya,\n\n" +
+
+        "I want to know more about this product.\n\n" +
+
+        "Product Name: " +
+
+        selectedProductName +
+
+        "\n\n" +
+
+        "Product Image:\n" +
+
+        imageURL;
+
+
+    const whatsappURL =
+
+        "https://wa.me/" +
+
+        whatsappNumber +
+
+        "?text=" +
+
+        encodeURIComponent(
+            whatsappMessage
+        );
+
+
+    document.getElementById(
+        "whatsappLink"
+    ).href =
+        whatsappURL;
+
+
+    /* =================================================
+       EMAIL
+       ================================================= */
+
+
+    const emailSubject =
+
+        "Product Enquiry - " +
+
+        selectedProductName;
+
+
+    const emailBody =
+
+        "Hello Jagdish Bastralaya,\n\n" +
+
+        "I want to know more about this product.\n\n" +
+
+        "Product Name: " +
+
+        selectedProductName +
+
+        "\n\n" +
+
+        "Product Image:\n" +
+
+        imageURL;
+
+
+    const emailURL =
+
+        "mailto:" +
+
+        emailAddress +
+
+        "?subject=" +
+
+        encodeURIComponent(
+            emailSubject
+        ) +
+
+        "&body=" +
+
+        encodeURIComponent(
+            emailBody
+        );
+
+
+    document.getElementById(
+        "emailLink"
+    ).href =
+        emailURL;
+
+}
+
+
+/* =====================================================
+   CLOSE POPUP
+   ===================================================== */
+
+function closeProductModal() {
+
+    document.getElementById(
+        "productModal"
+    ).classList.remove(
+        "active"
+    );
+
+}
+
+
+/* =====================================================
+   CLICK OUTSIDE
+   ===================================================== */
+
+document.addEventListener(
+    "click",
+    function (event) {
+
+
+        const modal =
+            document.getElementById(
+                "productModal"
+            );
+
+
+        if (
+            event.target === modal
+        ) {
+
+            closeProductModal();
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   ESCAPE KEY
+   ===================================================== */
+
+document.addEventListener(
+    "keydown",
+    function (event) {
+
+
+        if (
+            event.key === "Escape"
+        ) {
+
+            closeProductModal();
+
+        }
+
+    }
+);
+
+</script>
+
 
 </body>
 
 </html>
-<footer>
-  <p>&copy; <span id="year"></span> Jagdish Bastralaya. All rights reserved.</p>
-
-<script>
-  document.getElementById("year").textContent = new Date().getFullYear();
-</script>
-</footer>

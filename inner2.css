@@ -166,3 +166,254 @@ select {
 .header {
     position: relative;
 }
+/* =========================================
+   PRODUCT CONTACT POPUP
+   ========================================= */
+
+.product-modal {
+    display: none;
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 99999;
+
+    background: rgba(0, 0, 0, 0.65);
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 20px;
+
+    box-sizing: border-box;
+}
+
+
+.product-modal.active {
+    display: flex;
+}
+
+
+.product-modal-box {
+    width: 100%;
+
+    max-width: 420px;
+
+    max-height: 90vh;
+
+    overflow-y: auto;
+
+    background: white;
+
+    border: 3px solid black;
+
+    border-radius: 20px;
+
+    padding: 20px;
+
+    text-align: center;
+
+    box-sizing: border-box;
+
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+
+
+/* Product image */
+
+.product-modal-image {
+    display: block;
+
+    width: 100%;
+
+    max-width: 280px;
+
+    max-height: 320px;
+
+    object-fit: contain;
+
+    margin: 0 auto 15px;
+
+    border: 2px solid black;
+
+    border-radius: 12px;
+}
+
+
+/* Question */
+
+.product-modal-question {
+
+    font-size: 20px;
+
+    font-weight: bold;
+
+    line-height: 1.5;
+
+    margin: 10px 0 20px;
+}
+
+
+/* Yes / No */
+
+.modal-buttons {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 15px;
+
+    flex-wrap: wrap;
+}
+
+
+.modal-btn {
+
+    min-width: 120px;
+
+    padding: 12px 20px;
+
+    border: 2px solid black;
+
+    border-radius: 12px;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+
+.yes-btn {
+
+    background: #25D366;
+
+    color: white;
+}
+
+
+.no-btn {
+
+    background: #eeeeee;
+
+    color: black;
+}
+
+
+/* Contact question */
+
+.contact-question {
+
+    font-size: 20px;
+
+    font-weight: bold;
+
+    line-height: 1.5;
+
+    margin-bottom: 20px;
+}
+
+
+/* Contact buttons */
+
+.contact-buttons {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 12px;
+}
+
+
+.contact-btn {
+
+    display: block;
+
+    width: 100%;
+
+    padding: 13px;
+
+    box-sizing: border-box;
+
+    border: 2px solid black;
+
+    border-radius: 12px;
+
+    text-decoration: none;
+
+    font-size: 17px;
+
+    font-weight: bold;
+}
+
+
+.whatsapp-btn {
+
+    background: #25D366;
+
+    color: white;
+}
+
+
+.email-btn {
+
+    background: #4285F4;
+
+    color: white;
+}
+
+
+/* Close */
+
+.close-modal-btn {
+
+    margin-top: 15px;
+
+    padding: 10px 25px;
+
+    border: 2px solid black;
+
+    border-radius: 10px;
+
+    background: white;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+
+/* Mobile */
+
+@media screen and (max-width: 600px) {
+
+    .product-modal {
+
+        padding: 15px;
+    }
+
+    .product-modal-box {
+
+        max-width: 350px;
+
+        padding: 15px;
+    }
+
+    .product-modal-image {
+
+        max-width: 240px;
+
+        max-height: 280px;
+    }
+
+    .product-modal-question {
+
+        font-size: 18px;
+    }
+
+}
